@@ -1,17 +1,22 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class CameraFollow : MonoBehaviour
+public class resetScene : MonoBehaviour
 {
-    private Camera m_Camera;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        m_Camera = Camera.main;
+        
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    public void ResetScene()
+    {
+        SceneManager.LoadScene(0);
     }
 }
