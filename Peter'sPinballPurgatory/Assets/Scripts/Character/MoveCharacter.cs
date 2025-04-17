@@ -33,6 +33,7 @@ public class MoveCharacter : MonoBehaviour
         if (canMove)
         {   
             direction = Vector2.zero;
+            /*
             if (Input.GetKey(KeyCode.W))
             {
                 moved = true;
@@ -43,6 +44,7 @@ public class MoveCharacter : MonoBehaviour
                 moved = true;
                 direction.x--;
             }
+            */
             if (Input.GetKey(KeyCode.D))
             {
                 moved = true;
