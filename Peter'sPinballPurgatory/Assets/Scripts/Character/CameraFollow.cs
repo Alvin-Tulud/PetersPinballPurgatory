@@ -4,6 +4,7 @@ public class CameraFollow : MonoBehaviour
 {
     private Camera m_Camera;
     Transform player;
+    public float distFromPlayer;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -16,7 +17,7 @@ public class CameraFollow : MonoBehaviour
     {
         try
         {
-            m_Camera.transform.position = new Vector3(player.position.x, player.position.y + 15f, player.position.z);
+            m_Camera.transform.position = new Vector3(player.position.x, player.position.y + distFromPlayer, player.position.z);
         }
         catch (System.Exception e)
         {

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class MoveCharacter : MonoBehaviour
 {
@@ -9,7 +10,8 @@ public class MoveCharacter : MonoBehaviour
     private const float gravity = -9.81f;
     public float gravityspeed;
     public float speed;
-    public float bumperforce;
+    public float bumperforcemin;
+    public float bumperforcemax;
 
     public bool canMove;
     public bool moved;
@@ -27,49 +29,17 @@ public class MoveCharacter : MonoBehaviour
         rb = GetComponent<Rigidbody>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (canMove)
-        {   
-            direction = Vector2.zero;
-            /*
-            if (Input.GetKey(KeyCode.W))
-            {
-                moved = true;
-                direction.x++;
-            }
-            if (Input.GetKey(KeyCode.S))
-            {
-                moved = true;
-                direction.x--;
-            }
-            */
-            if (Input.GetKey(KeyCode.D))
-            {
-                moved = true;
-                direction.z--;
-            }
-            if (Input.GetKey(KeyCode.A))
-            {
-                moved = true;
-                direction.z++;
-            }
-        }
-    }
-
     void FixedUpdate()
     {
         if (moved)
         {
             rb.linearVelocity += new Vector3(direction.x * speed, 0, direction.z * speed);
-
-            moved = false;
         }
 
         if (bumped)
         {
-            rb.AddExplosionForce(bumperforce, collisionPos, 360f, 0f, ForceMode.VelocityChange);
+            float randbumperforce = UnityEngine.Random.Range(bumperforcemin, bumperforcemax);
+            rb.AddExplosionForce(randbumperforce, collisionPos, 360f, 0f, ForceMode.VelocityChange);
             //rb.linearVelocity += (collisionBumper.GetContact(0).normal * bumperforce);
 
             bumped = false;
@@ -91,6 +61,30 @@ public class MoveCharacter : MonoBehaviour
             collisionPos = collision.transform.position;
             collisionBumper = collision;
             bumped = true;
+        }
+    }
+
+    public void getMoveVector(InputAction.CallbackContext context)
+    {
+        if (canMove)
+        {
+            if (context.started)
+            {
+                moved = true;
+
+                //Debug.Log("buttons being pressed");
+                Vector3 readVec = new Vector3(0, 0, -context.ReadValue<Vector2>().x);
+                Debug.Log(readVec);
+                direction = readVec;
+
+                Debug.Log(direction);
+            }
+            else if (context.canceled)
+            {
+                moved = false;
+
+                direction = Vector3.zero;
+            }
         }
     }
 }
