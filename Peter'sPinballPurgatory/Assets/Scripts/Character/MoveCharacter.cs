@@ -33,7 +33,7 @@ public class MoveCharacter : MonoBehaviour
     {
         if (moved)
         {
-            rb.linearVelocity += new Vector3(direction.x * speed, 0, direction.z * speed);
+            rb.linearVelocity += new Vector3(0, 0, direction.z * speed);
         }
 
         if (bumped)
@@ -62,6 +62,17 @@ public class MoveCharacter : MonoBehaviour
             collisionBumper = collision;
             bumped = true;
         }
+        else if (collision.gameObject.CompareTag("Paddle"))
+        {
+            GameObject g = collision.gameObject;
+            Debug.Log("hit paddle");
+
+            if (g.GetComponent<getcollhit>().getCanHit())
+            {
+                Debug.Log("hit moving");
+                rb.AddForce(100f, 0, 0, ForceMode.Impulse);
+            }
+        }
     }
 
     public void getMoveVector(InputAction.CallbackContext context)
@@ -74,10 +85,10 @@ public class MoveCharacter : MonoBehaviour
 
                 //Debug.Log("buttons being pressed");
                 Vector3 readVec = new Vector3(0, 0, -context.ReadValue<Vector2>().x);
-                Debug.Log(readVec);
+                //Debug.Log(readVec);
                 direction = readVec;
 
-                Debug.Log(direction);
+                //Debug.Log(direction);
             }
             else if (context.canceled)
             {
