@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Bumper
   - Paddle
+  - topScreen
   layers:
   - Default
   - TransparentFX
