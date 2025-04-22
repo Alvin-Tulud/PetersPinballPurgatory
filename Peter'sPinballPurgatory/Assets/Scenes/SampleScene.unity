@@ -332,6 +332,9 @@ MonoBehaviour:
   paddleside: 1
   currenttime: 0
   swingtime: 5
+  swingin: 0
+  swingout: 0
+  startswing: 0
 --- !u!1 &113803427
 GameObject:
   m_ObjectHideFlags: 0
@@ -1054,7 +1057,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9befc3153673eb0459a764a064f0a288, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distFromPlayer: 30
+  distFromPlayer: 25
+  smoothTime: 0.2
 --- !u!1 &335762244
 GameObject:
   m_ObjectHideFlags: 0
@@ -2528,7 +2532,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 1
   m_Constraints: 0
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
 --- !u!114 &1419160655
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3792,6 +3796,9 @@ MonoBehaviour:
   paddleside: 0
   currenttime: 0
   swingtime: 5
+  swingin: 0
+  swingout: 0
+  startswing: 0
 --- !u!1 &2082603038
 GameObject:
   m_ObjectHideFlags: 0

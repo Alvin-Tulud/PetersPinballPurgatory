@@ -12,8 +12,8 @@ public class swivelpaddle : MonoBehaviour
     public side paddleside;
     private float swingangleinit, swinganglemax;
     public int currenttime, swingtime;
-    private bool swingin, swingout;
-    private bool startswing;
+    public bool swingin, swingout;
+    public bool startswing;
 
     private bool canhit;
 
@@ -71,7 +71,7 @@ public class swivelpaddle : MonoBehaviour
 
                 //Debug.Log(swingangle + paddleside.ToString() + " in");
 
-                currenttime ++;
+                currenttime++;
             }
             else if (swingin && currenttime >= swingtime)
             {

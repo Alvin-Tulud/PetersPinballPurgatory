@@ -65,11 +65,11 @@ public class MoveCharacter : MonoBehaviour
         else if (collision.gameObject.CompareTag("Paddle"))
         {
             GameObject g = collision.gameObject;
-            Debug.Log("hit paddle");
+            //Debug.Log("hit paddle");
 
             if (g.GetComponent<getcollhit>().getCanHit())
             {
-                Debug.Log("hit moving");
+                //Debug.Log("hit moving");
                 rb.AddForce(100f, 0, 0, ForceMode.Impulse);
             }
         }
