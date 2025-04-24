@@ -4,7 +4,7 @@ using TMPro;
 public class BumperStats : MonoBehaviour
 {
     public TextMeshProUGUI scoreText;
-    int scoreValue;
+    public int scoreValue;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -29,5 +29,11 @@ public class BumperStats : MonoBehaviour
     public int getScore()
     {
         return scoreValue;
+    }
+
+    public void setScore(int score)
+    {
+        scoreValue = score;
+        updateScore(effect.None);
     }
 }

@@ -17,7 +17,6 @@ public class MoveCharacter : MonoBehaviour
     public bool moved;
 
     Vector3 collisionPos;
-    Collision collisionBumper;
     private bool bumped;
 
     private Rigidbody rb;
@@ -27,6 +26,8 @@ public class MoveCharacter : MonoBehaviour
         direction = Vector2.zero;
 
         rb = GetComponent<Rigidbody>();
+
+        bumped = true;
     }
 
     void FixedUpdate()
@@ -34,15 +35,6 @@ public class MoveCharacter : MonoBehaviour
         if (moved)
         {
             rb.linearVelocity += new Vector3(0, 0, direction.z * speed);
-        }
-
-        if (bumped)
-        {
-            float randbumperforce = UnityEngine.Random.Range(bumperforcemin, bumperforcemax);
-            rb.AddExplosionForce(randbumperforce, collisionPos, 360f, 0f, ForceMode.VelocityChange);
-            //rb.linearVelocity += (collisionBumper.GetContact(0).normal * bumperforce);
-
-            bumped = false;
         }
 
         rb.linearVelocity = new Vector3(rb.linearVelocity.x, gravity * gravityspeed, rb.linearVelocity.z);
@@ -60,12 +52,22 @@ public class MoveCharacter : MonoBehaviour
             GameObject g = collision.gameObject;
             //Debug.Log("hit paddle");
 
-            if (g.GetComponent<getcollhit>().getCanHit())
+            if (g.GetComponent<getcollhit>().getCanHit() && bumped)
             {
-                //Debug.Log("hit moving");
-                rb.AddForce(75f, 0, 0, ForceMode.Impulse);
+                StartCoroutine(bumperCooldown());
             }
         }
+    }
+
+    IEnumerator bumperCooldown()
+    {
+        bumped = false;
+
+        rb.AddForce(75f, 0, 0, ForceMode.Impulse);
+
+        yield return new WaitForSeconds(0.1f);
+
+        bumped = true;
     }
 
     public void getMoveVector(InputAction.CallbackContext context)
