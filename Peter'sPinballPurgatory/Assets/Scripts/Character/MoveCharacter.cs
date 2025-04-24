@@ -53,28 +53,6 @@ public class MoveCharacter : MonoBehaviour
     {
         canMove = move;
     }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Bumper"))
-        {
-            collisionPos = collision.transform.position;
-            collisionBumper = collision;
-            bumped = true;
-        }
-        else if (collision.gameObject.CompareTag("Paddle"))
-        {
-            GameObject g = collision.gameObject;
-            //Debug.Log("hit paddle");
-
-            if (g.GetComponent<getcollhit>().getCanHit())
-            {
-                //Debug.Log("hit moving");
-                rb.AddForce(100f, 0, 0, ForceMode.Impulse);
-            }
-        }
-    }
-
     private void OnCollisionStay(Collision collision)
     {
         if (collision.gameObject.CompareTag("Paddle"))
