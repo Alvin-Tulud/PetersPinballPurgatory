@@ -322,7 +322,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 55
+    m_Bits: 1
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 8400000, guid: c506c107336e80c47b759a3867e10429, type: 2}
   m_TargetDisplay: 0
@@ -686,10 +686,9 @@ GameObject:
   m_Component:
   - component: {fileID: 723418583}
   - component: {fileID: 723418582}
-  - component: {fileID: 723418581}
   - component: {fileID: 723418580}
   m_Layer: 0
-  m_Name: Camera
+  m_Name: Stats Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -739,14 +738,6 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
---- !u!81 &723418581
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 723418579}
-  m_Enabled: 1
 --- !u!20 &723418582
 Camera:
   m_ObjectHideFlags: 0
@@ -1542,7 +1533,7 @@ GameObject:
   - component: {fileID: 1860901255}
   - component: {fileID: 1860901253}
   m_Layer: 0
-  m_Name: Minimap
+  m_Name: Minimap Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1631,7 +1622,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 55
+    m_Bits: 1
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 8400000, guid: c506c107336e80c47b759a3867e10429, type: 2}
   m_TargetDisplay: 0
@@ -1787,7 +1778,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 0/20
+  m_text: 'Score:
+
+    0/20'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1974,6 +1967,7 @@ SceneRoots:
   m_Roots:
   - {fileID: 330585546}
   - {fileID: 1860901256}
+  - {fileID: 723418583}
   - {fileID: 410087041}
   - {fileID: 832575519}
   - {fileID: 4624134115382550614}
@@ -1981,4 +1975,3 @@ SceneRoots:
   - {fileID: 1234490289}
   - {fileID: 1207926300}
   - {fileID: 1549986806}
-  - {fileID: 723418583}
