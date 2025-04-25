@@ -6,7 +6,8 @@ public class BumperHit : MonoBehaviour
     float bumperforcemin = 20f;
     float bumperforcemax = 40f;
 
-    
+    public float pitchmin;
+    public float pitchmax;
 
     BumperStats bstats;
 
@@ -25,7 +26,7 @@ public class BumperHit : MonoBehaviour
             Rigidbody rb = collision.gameObject.GetComponent<Rigidbody>();
             rb.AddExplosionForce(randbumperforce, transform.position, 360f, 0f, ForceMode.VelocityChange);
 
-            float pitch = Random.Range(-0.8f, 1.2f);
+            float pitch = Random.Range(pitchmin, pitchmax);
             bsource.pitch = pitch;
             bsource.Play();
         }
