@@ -11,13 +11,19 @@ public class swivelpaddle : MonoBehaviour
 
     public side paddleside;
     private float swingangleinit, swinganglemax;
-    public int currenttime, swingtime;
-    public bool swingin, swingout;
-    public bool startswing;
+    private int currenttime, swingtime;
+    private bool swingin, swingout;
+    private bool startswing;
 
     private bool canhit;
 
     private bool starttest;
+    private bool callfirst;
+
+    public float pitchmin;
+    public float pitchmax;
+
+    AudioSource bsource;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -36,6 +42,9 @@ public class swivelpaddle : MonoBehaviour
         swingout = false;
 
         starttest = true;
+        callfirst = true;
+
+        bsource = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -52,6 +61,7 @@ public class swivelpaddle : MonoBehaviour
 
         startswing = true;
         swingin = true;
+        callfirst = true;
 
         yield return new WaitForSeconds(0.5f);
 
@@ -62,6 +72,15 @@ public class swivelpaddle : MonoBehaviour
     {
         if (startswing)
         {
+            if (callfirst)
+            {
+                float pitch = Random.Range(pitchmin, pitchmax);
+                bsource.pitch = pitch;
+                bsource.Play();
+
+                callfirst = false;
+            }
+
             if (swingin && currenttime < swingtime)
             {
                 transform.GetChild(0).GetComponent<getcollhit>().setCanHit(true);
