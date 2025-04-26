@@ -11,11 +11,10 @@ public class swivelpaddle : MonoBehaviour
 
     public side paddleside;
     private float swingangleinit, swinganglemax;
-    private int currenttime, swingtime;
+    private int currenttime;
+    public int swingtime;
     private bool swingin, swingout;
     private bool startswing;
-
-    private bool canhit;
 
     private bool starttest;
     private bool callfirst;
@@ -27,7 +26,7 @@ public class swivelpaddle : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        if (paddleside == 0)
+        if (paddleside == side.Left)
         {
             swinganglemax = 240;
             swingangleinit = 300;

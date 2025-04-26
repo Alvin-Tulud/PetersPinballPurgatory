@@ -37,6 +37,23 @@ public class MoveCharacter : MonoBehaviour
             rb.linearVelocity += new Vector3(0, 0, direction.z * speed);
         }
 
+        //speed cap
+        if (rb.linearVelocity.x > 45f)
+        {
+            Debug.Log("too fast x: " + rb.linearVelocity.x);
+            rb.linearVelocity = new Vector3(45f, rb.linearVelocity.y, rb.linearVelocity.z);
+        }
+        if (rb.linearVelocity.y > 5f)
+        {
+            //Debug.Log("too fast y: " + rb.linearVelocity.y);
+            rb.linearVelocity = new Vector3(rb.linearVelocity.x, 5f, rb.linearVelocity.z);
+        }
+        if (rb.linearVelocity.z > 45f)
+        {
+            Debug.Log("too fast z: " + rb.linearVelocity.z);
+            rb.linearVelocity = new Vector3(rb.linearVelocity.x, rb.linearVelocity.y, 45f);
+        }
+
         rb.linearVelocity = new Vector3(rb.linearVelocity.x, gravity * gravityspeed, rb.linearVelocity.z);
         //Debug.Log(rb.linearVelocity);
     }

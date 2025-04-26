@@ -16,7 +16,7 @@ public class RoundManager : MonoBehaviour
         minBumperScore = 1;
 
         setBumpers();
-        Debug.Log("setbumpers");
+        //Debug.Log("setbumpers");
     }
 
     // Update is called once per frame
