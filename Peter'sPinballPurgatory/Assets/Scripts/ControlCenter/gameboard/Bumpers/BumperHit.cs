@@ -15,6 +15,7 @@ public class BumperHit : MonoBehaviour
 
     private void Start()
     {
+        bstats = GetComponent<BumperStats>();
         bsource = GetComponent<AudioSource>();
     }
 
@@ -29,6 +30,8 @@ public class BumperHit : MonoBehaviour
             float pitch = Random.Range(pitchmin, pitchmax);
             bsource.pitch = pitch;
             bsource.Play();
+
+            GameObject.Find("StatTracker").GetComponent<ScoreTracker>().AddScore(bstats.getScore());
         }
     }
 }
