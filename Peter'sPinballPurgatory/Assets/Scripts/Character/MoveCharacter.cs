@@ -16,6 +16,9 @@ public class MoveCharacter : MonoBehaviour
     public bool canMove;
     public bool moved;
 
+    private bool canLaunch;
+    private bool needCap;
+
     Vector3 collisionPos;
     private bool bumped;
 
@@ -26,6 +29,8 @@ public class MoveCharacter : MonoBehaviour
         direction = Vector2.zero;
 
         rb = GetComponent<Rigidbody>();
+
+        canLaunch = true;
 
         bumped = true;
     }
@@ -38,20 +43,23 @@ public class MoveCharacter : MonoBehaviour
         }
 
         //speed cap
-        if (rb.linearVelocity.x > 45f)
+        if (needCap)
         {
-            Debug.Log("too fast x: " + rb.linearVelocity.x);
-            rb.linearVelocity = new Vector3(45f, rb.linearVelocity.y, rb.linearVelocity.z);
-        }
-        if (rb.linearVelocity.y > 5f)
-        {
-            //Debug.Log("too fast y: " + rb.linearVelocity.y);
-            rb.linearVelocity = new Vector3(rb.linearVelocity.x, 5f, rb.linearVelocity.z);
-        }
-        if (rb.linearVelocity.z > 45f)
-        {
-            Debug.Log("too fast z: " + rb.linearVelocity.z);
-            rb.linearVelocity = new Vector3(rb.linearVelocity.x, rb.linearVelocity.y, 45f);
+            if (rb.linearVelocity.x > 45f)
+            {
+                Debug.Log("too fast x: " + rb.linearVelocity.x);
+                rb.linearVelocity = new Vector3(45f, rb.linearVelocity.y, rb.linearVelocity.z);
+            }
+            if (rb.linearVelocity.y > 5f)
+            {
+                //Debug.Log("too fast y: " + rb.linearVelocity.y);
+                rb.linearVelocity = new Vector3(rb.linearVelocity.x, 5f, rb.linearVelocity.z);
+            }
+            if (rb.linearVelocity.z > 45f)
+            {
+                Debug.Log("too fast z: " + rb.linearVelocity.z);
+                rb.linearVelocity = new Vector3(rb.linearVelocity.x, rb.linearVelocity.y, 45f);
+            }
         }
 
         rb.linearVelocity = new Vector3(rb.linearVelocity.x, gravity * gravityspeed, rb.linearVelocity.z);
@@ -62,6 +70,12 @@ public class MoveCharacter : MonoBehaviour
     {
         canMove = move;
     }
+
+    public void setCap(bool cap)
+    {
+        needCap = cap;
+    }
+
     private void OnCollisionStay(Collision collision)
     {
         if (collision.gameObject.CompareTag("Paddle"))
@@ -108,6 +122,16 @@ public class MoveCharacter : MonoBehaviour
 
                 direction = Vector3.zero;
             }
+        }
+    }
+
+    public void getLaunchVector(InputAction.CallbackContext context)
+    {
+        if (canLaunch)
+        {
+            rb.AddForce(110f, 0f, 0f, ForceMode.Impulse);
+
+            canLaunch = false;
         }
     }
 }
