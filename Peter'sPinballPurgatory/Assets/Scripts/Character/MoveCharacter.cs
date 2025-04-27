@@ -24,7 +24,7 @@ public class MoveCharacter : MonoBehaviour
 
     private Rigidbody rb;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    void Awake()
     {
         direction = Vector2.zero;
 
@@ -50,10 +50,10 @@ public class MoveCharacter : MonoBehaviour
                 Debug.Log("too fast x: " + rb.linearVelocity.x);
                 rb.linearVelocity = new Vector3(45f, rb.linearVelocity.y, rb.linearVelocity.z);
             }
-            if (rb.linearVelocity.y > 5f)
+            if (rb.linearVelocity.y > 2f)
             {
                 //Debug.Log("too fast y: " + rb.linearVelocity.y);
-                rb.linearVelocity = new Vector3(rb.linearVelocity.x, 5f, rb.linearVelocity.z);
+                rb.linearVelocity = new Vector3(rb.linearVelocity.x, 2f, rb.linearVelocity.z);
             }
             if (rb.linearVelocity.z > 45f)
             {

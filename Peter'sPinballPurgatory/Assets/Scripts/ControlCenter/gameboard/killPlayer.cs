@@ -13,4 +13,14 @@ public class killPlayer : MonoBehaviour
             killedPlayer = true;
         }
     }
+
+    public bool getState()
+    {
+        return killedPlayer;
+    }
+
+    public void setState()
+    {
+        killedPlayer = false;
+    }
 }

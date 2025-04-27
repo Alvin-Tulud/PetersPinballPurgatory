@@ -6,9 +6,14 @@ public class RoundManager : MonoBehaviour
 {
     private int roundNum;
     private float minBumperScore;
-    private static float BumperScoreIncrease = 0.4f;
+    private static float BumperScoreIncrease = 0.2f;
     private bool roundPassed;
     private int timesScorePassed;
+
+    public Vector3 playerinitPos;
+    public GameObject playerPrefab;
+
+    public killPlayer[] killBoxes;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -22,7 +27,34 @@ public class RoundManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        foreach(killPlayer player in killBoxes)
+        {
+            if (player.getState())
+            {
+                player.setState();
+
+                if (GetComponent<ScoreTracker>().checkPass())
+                {
+                    Debug.Log("round increase");
+                    increaseRound();
+                }
+
+                resetBoardState();
+            }
+        }
+    }
+
+    public void resetBoardState()
+    {
+        Instantiate(playerPrefab, playerinitPos, Quaternion.Euler(90f, 270f, 180f));
+
+        Camera.main.GetComponent<CameraFollow>().setPlayerPos();
+
+        GameObject.Find("launchwalltrigger").GetComponent<flipwalloff>().resetwall();
+
+        GetComponent<ScoreTracker>().resetScore();
+
+        setBumpers();
     }
 
     public void increaseRound()
@@ -60,7 +92,7 @@ public class RoundManager : MonoBehaviour
             //Debug.Log("score:" + bumperScores[i]);
         }
 
-        setScore(maxScore / 2);
+        setScore( Mathf.FloorToInt( (maxScore / 2) * (1 + (roundNum * 0.1f) ) ) );
 
 
         bumperScores = bumperScores.OrderBy(x => Random.value).ToList();

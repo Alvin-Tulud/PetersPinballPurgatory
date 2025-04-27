@@ -12,6 +12,16 @@ public class BumperSetter : MonoBehaviour
     {
         currentBumperCount = 0;
 
+        foreach(GameObject bumper in bumperSlots)
+        {
+            if (bumper.transform.childCount > 0)
+            {
+                //Debug.Log(bumper.transform.childCount);
+                //Debug.Log("Check Destroy");
+                Destroy(bumper.transform.GetChild(0).gameObject);
+            }
+        }
+
         for (int i = 0; i < bumperSlots.Length; i++)
         {
             if (currentBumperCount < maxBumpers)

@@ -7,7 +7,7 @@ public class flipwalloff : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        launchwall.SetActive(false);
+        resetwall();
     }
 
     private void OnTriggerExit(Collider other)
@@ -18,5 +18,10 @@ public class flipwalloff : MonoBehaviour
 
             other.gameObject.GetComponent<MoveCharacter>().setCap(true);
         }
+    }
+
+    public void resetwall()
+    {
+        launchwall.SetActive(false);
     }
 }

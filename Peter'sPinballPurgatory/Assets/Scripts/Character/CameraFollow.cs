@@ -16,7 +16,7 @@ public class CameraFollow : MonoBehaviour
     void Start()
     {
         m_Camera = Camera.main;
-        player = GameObject.FindWithTag("Player").transform;
+        setPlayerPos();
 
         offset = new Vector3(0f, distFromPlayer, 0f);
         offestdie = new Vector3(-10f, distFromBumper, 0f);
@@ -35,5 +35,10 @@ public class CameraFollow : MonoBehaviour
             Vector3 targetPosition = bumperMid.position + offestdie;
             transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, smoothTime);
         }
+    }
+
+    public void setPlayerPos()
+    {
+        player = GameObject.FindWithTag("Player").transform;
     }
 }
