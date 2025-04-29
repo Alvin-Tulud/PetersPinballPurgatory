@@ -1413,8 +1413,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   paddleside: 0
   swingtime: 5
-  pitchmin: 0
-  pitchmax: 0
+  pitchmin: 0.8
+  pitchmax: 1
 --- !u!82 &6721394477048266069
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1428,7 +1428,7 @@ AudioSource:
   m_audioClip: {fileID: 8300000, guid: a5c3945fbe5fa574e8d7d19bfe27f01b, type: 3}
   m_Resource: {fileID: 8300000, guid: a5c3945fbe5fa574e8d7d19bfe27f01b, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -2387,8 +2387,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   paddleside: 1
   swingtime: 5
-  pitchmin: 0
-  pitchmax: 0
+  pitchmin: 0.8
+  pitchmax: 1
 --- !u!82 &8455641656566611760
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2402,7 +2402,7 @@ AudioSource:
   m_audioClip: {fileID: 8300000, guid: a5c3945fbe5fa574e8d7d19bfe27f01b, type: 3}
   m_Resource: {fileID: 8300000, guid: a5c3945fbe5fa574e8d7d19bfe27f01b, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 0
   Mute: 0
