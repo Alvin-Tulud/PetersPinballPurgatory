@@ -13,9 +13,4 @@ public class RoundStatTracker : MonoBehaviour
     {
         
     }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        
-    }
 }

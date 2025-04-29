@@ -45,20 +45,20 @@ public class MoveCharacter : MonoBehaviour
         //speed cap
         if (needCap)
         {
-            if (rb.linearVelocity.x > 45f)
+            if (rb.linearVelocity.x > 65f)
             {
-                Debug.Log("too fast x: " + rb.linearVelocity.x);
-                rb.linearVelocity = new Vector3(45f, rb.linearVelocity.y, rb.linearVelocity.z);
+                //Debug.Log("too fast x: " + rb.linearVelocity.x);
+                rb.linearVelocity = new Vector3(65f, rb.linearVelocity.y, rb.linearVelocity.z);
             }
-            if (rb.linearVelocity.y > 2f)
+            if (rb.linearVelocity.y > 5f)
             {
                 //Debug.Log("too fast y: " + rb.linearVelocity.y);
-                rb.linearVelocity = new Vector3(rb.linearVelocity.x, 2f, rb.linearVelocity.z);
+                rb.linearVelocity = new Vector3(rb.linearVelocity.x, 5f, rb.linearVelocity.z);
             }
-            if (rb.linearVelocity.z > 45f)
+            if (rb.linearVelocity.z > 65f)
             {
-                Debug.Log("too fast z: " + rb.linearVelocity.z);
-                rb.linearVelocity = new Vector3(rb.linearVelocity.x, rb.linearVelocity.y, 45f);
+                //Debug.Log("too fast z: " + rb.linearVelocity.z);
+                rb.linearVelocity = new Vector3(rb.linearVelocity.x, rb.linearVelocity.y, 65f);
             }
         }
 
