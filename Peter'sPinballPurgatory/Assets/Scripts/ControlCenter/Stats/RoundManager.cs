@@ -92,7 +92,7 @@ public class RoundManager : MonoBehaviour
             //Debug.Log("score:" + bumperScores[i]);
         }
 
-        setScore( Mathf.FloorToInt( (maxScore / 2) * (1 + (roundNum * 0.1f) ) ) );
+        setScore( Mathf.FloorToInt( (maxScore / 2) * (1 + (roundNum * 0.3f) ) ) );
 
 
         bumperScores = bumperScores.OrderBy(x => Random.value).ToList();
