@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 
 public class RoundManager : MonoBehaviour
@@ -13,6 +14,8 @@ public class RoundManager : MonoBehaviour
     public Vector3 playerinitPos;
     public GameObject playerPrefab;
 
+    public TextMeshProUGUI roundText;
+
     public killPlayer[] killBoxes;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -21,6 +24,7 @@ public class RoundManager : MonoBehaviour
         minBumperScore = 1;
 
         setBumpers();
+        setRound();
         //Debug.Log("setbumpers");
     }
 
@@ -44,7 +48,7 @@ public class RoundManager : MonoBehaviour
         }
     }
 
-    public void resetBoardState()
+    private void resetBoardState()
     {
         Instantiate(playerPrefab, playerinitPos, Quaternion.Euler(90f, 270f, 180f));
 
@@ -57,13 +61,15 @@ public class RoundManager : MonoBehaviour
         setBumpers();
     }
 
-    public void increaseRound()
+    private void increaseRound()
     {
         roundNum++;
         minBumperScore += BumperScoreIncrease;
+
+        setRound();
     }
 
-    public void setBumpers()
+    private void setBumpers()
     {
         List<int> bumperScores = new List<int>();
 
@@ -92,7 +98,7 @@ public class RoundManager : MonoBehaviour
             //Debug.Log("score:" + bumperScores[i]);
         }
 
-        setScore( Mathf.FloorToInt( (maxScore / 2) * (1 + (roundNum * 0.3f) ) ) );
+        setScore( Mathf.FloorToInt( (maxScore / 2) * (1 + (roundNum * 0.2f) ) ) );
 
 
         bumperScores = bumperScores.OrderBy(x => Random.value).ToList();
@@ -104,5 +110,10 @@ public class RoundManager : MonoBehaviour
     {
         GetComponent<ScoreTracker>().SetMaxScore(score);
         GetComponent<ScoreTracker>().resetScore();
+    }
+
+    private void setRound()
+    {
+        roundText.text = "Round:\n" + (roundNum + 1);
     }
 }

@@ -38,4 +38,9 @@ public class ScoreTracker : MonoBehaviour
     {
         scoreText.text = "Score:\n" + score + "/" + scoreMax;
     }
+
+    public int getScore()
+    {
+        return score;
+    }
 }

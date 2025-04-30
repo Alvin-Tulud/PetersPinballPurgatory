@@ -10,15 +10,19 @@ public abstract class QuarterAbstract : MonoBehaviour
         dies,
         firsthit,
         goalmet,
-        bouncecount,
-        hitlowest,
-        hithighest,
-        hitwalltwice,
-        hitwall,
+        hithighestfirst,
+    }
+
+    public enum raritytype
+    {
+        common,
+        uncommon,
+        rare,
     }
 
     public int count;
     public triggertype trigger;
+    public raritytype rarity;
     public RoundStatTracker stats;
 
     //if trigger has been met call doEffect
@@ -48,23 +52,7 @@ public abstract class QuarterAbstract : MonoBehaviour
         {
 
         }
-        else if (trigger == triggertype.bouncecount)
-        {
-
-        }
-        else if (trigger == triggertype.hitlowest)
-        {
-
-        }
-        else if (trigger == triggertype.hithighest)
-        {
-
-        }
-        else if (trigger == triggertype.hitwalltwice)
-        {
-
-        }
-        else if (trigger == triggertype.hitwall)
+        else if (trigger == triggertype.hithighestfirst)
         {
 
         }
@@ -72,4 +60,20 @@ public abstract class QuarterAbstract : MonoBehaviour
 
     //when triggered do effect
     public abstract void doEffect();
+
+    public int getRarity()
+    {
+        if (rarity == raritytype.common)
+        {
+            return 70;
+        }
+        else if (rarity == raritytype.uncommon)
+        {
+            return 20;
+        }
+        else
+        {
+            return 10;
+        }
+    }
 }

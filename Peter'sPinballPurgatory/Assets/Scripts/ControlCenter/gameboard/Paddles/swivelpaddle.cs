@@ -58,9 +58,14 @@ public class swivelpaddle : MonoBehaviour
     {
         starttest = false;
 
-        startswing = true;
-        swingin = true;
-        callfirst = true;
+        float rand = Random.Range(0f, 1f);;
+
+        if (rand > 0.5f)
+        {
+            startswing = true;
+            swingin = true;
+            callfirst = true;
+        }
 
         yield return new WaitForSeconds(0.5f);
 
