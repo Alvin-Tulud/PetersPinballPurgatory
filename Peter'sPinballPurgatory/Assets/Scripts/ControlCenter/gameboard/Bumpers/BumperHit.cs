@@ -31,7 +31,7 @@ public class BumperHit : MonoBehaviour
             bsource.pitch = pitch;
             bsource.Play();
 
-            GameObject.Find("StatTracker").GetComponent<ScoreTracker>().AddScore(bstats.getScore());
+            GameObject.Find("GameTracker").GetComponent<ScoreTracker>().AddScore(bstats.getScore());
         }
     }
 }

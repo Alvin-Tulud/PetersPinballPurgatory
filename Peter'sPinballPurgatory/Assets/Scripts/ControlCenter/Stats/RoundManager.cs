@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class RoundManager : MonoBehaviour
 {
@@ -17,6 +18,11 @@ public class RoundManager : MonoBehaviour
     public TextMeshProUGUI roundText;
 
     public killPlayer[] killBoxes;
+
+    public int maxlives;
+    private int currentlives;
+
+    public TextMeshProUGUI livesText;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -26,6 +32,9 @@ public class RoundManager : MonoBehaviour
         setBumpers();
         setRound();
         //Debug.Log("setbumpers");
+        currentlives = maxlives;
+
+        setLives();
     }
 
     // Update is called once per frame
@@ -37,11 +46,21 @@ public class RoundManager : MonoBehaviour
             {
                 player.setState();
 
+                currentlives--;
+
+                setLives();
+
                 if (GetComponent<ScoreTracker>().checkPass())
                 {
                     Debug.Log("round increase");
                     increaseRound();
                 }
+
+                if (currentlives <= 0)
+                {
+                    SceneManager.LoadScene(0);
+                }
+
 
                 resetBoardState();
             }
@@ -65,6 +84,9 @@ public class RoundManager : MonoBehaviour
     {
         roundNum++;
         minBumperScore += BumperScoreIncrease;
+
+        currentlives = maxlives;
+        setLives();
 
         setRound();
     }
@@ -115,5 +137,10 @@ public class RoundManager : MonoBehaviour
     private void setRound()
     {
         roundText.text = "Round:\n" + (roundNum + 1);
+    }
+
+    private void setLives()
+    {
+        livesText.text = "Lives:\n" + currentlives;
     }
 }
