@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class RoundStatTracker : MonoBehaviour
@@ -7,16 +9,12 @@ public class RoundStatTracker : MonoBehaviour
     private float seconds;
 
     private int highestbumper;
+
+    private bool checkedBump, checkedDead;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         resetStats();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public void resetStats()
@@ -25,7 +23,12 @@ public class RoundStatTracker : MonoBehaviour
         died = false;
         firsthit = false;
         firsthithighest = false;
-        seconds = 0;
+        seconds = Time.unscaledTime;
+
+        seconds = (float) Math.Round(seconds, 2, MidpointRounding.ToEven);
+
+        checkedBump = true;
+        checkedDead = true;
     }
 
     public void setHighestBumper()
@@ -59,10 +62,24 @@ public class RoundStatTracker : MonoBehaviour
         }
 
         bumps++;
+
+        checkedBump = false;
     }
 
     public void setDead()
     {
         died = true;
+
+        checkedDead = false;
+    }
+
+    public int getBumps()
+    {
+        return bumps;
+    }
+
+    public bool isDead()
+    {
+        return died;
     }
 }
