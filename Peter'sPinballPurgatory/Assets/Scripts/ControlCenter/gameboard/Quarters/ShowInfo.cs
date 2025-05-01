@@ -13,7 +13,7 @@ public class ShowInfo : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     }
     public void OnPointerEnter(PointerEventData eventData)
     {
-        Debug.Log("Pointer entered UI element: " + gameObject.name);
+        //Debug.Log("Pointer entered UI element: " + gameObject.name);
         // Add code here to execute when the mouse enters the UI element
         Info.SetActive(true);
         Info.GetComponent<Canvas>().sortingOrder = 2;
@@ -21,14 +21,14 @@ public class ShowInfo : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        Debug.Log("Pointer clicked UI element: " + gameObject.name);
+        //Debug.Log("Pointer clicked UI element: " + gameObject.name);
         // Add code here to execute when the mouse enters the UI element
         canSelect = false;
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        Debug.Log("Pointer exited UI element: " + gameObject.name);
+        //Debug.Log("Pointer exited UI element: " + gameObject.name);
         // Add code here to execute when the mouse exits the UI element
         Info.GetComponent<Canvas>().sortingOrder = 1;
         Info.SetActive(false);
