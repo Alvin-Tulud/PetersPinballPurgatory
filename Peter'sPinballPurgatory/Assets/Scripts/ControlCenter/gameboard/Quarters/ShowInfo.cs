@@ -27,9 +27,13 @@ public class ShowInfo : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
         if (canSelect)
         {
-            QuarterInventory inventory = Object.FindAnyObjectByType<QuarterInventory>();
+            QuarterInventory inventory = FindAnyObjectByType<QuarterInventory>();
 
             inventory.addQuarter(this.gameObject);
+
+            ShopSetter shop = FindAnyObjectByType<ShopSetter>();
+
+            shop.exitShop(this.gameObject);
 
             canSelect = false;
         }

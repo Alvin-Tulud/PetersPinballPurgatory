@@ -60,14 +60,11 @@ public class RoundManager : MonoBehaviour
                 {
                     SceneManager.LoadScene(0);
                 }
-
-
-                resetBoardState();
             }
         }
     }
 
-    private void resetBoardState()
+    public void resetBoardState()
     {
         Instantiate(playerPrefab, playerinitPos, Quaternion.Euler(90f, 270f, 180f));
 
@@ -89,6 +86,8 @@ public class RoundManager : MonoBehaviour
         setLives();
 
         setRound();
+
+        GetComponent<ShopSetter>().enterShop();
     }
 
     private void setBumpers()
