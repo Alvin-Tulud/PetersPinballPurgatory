@@ -9,5 +9,6 @@ public class QuarterInventory : MonoBehaviour
     public void addQuarter(GameObject Quarter)
     {
         Quarters.Add(Quarter);
+        Quarter.transform.SetParent(InventoryDisplay.transform, false);
     }
 }

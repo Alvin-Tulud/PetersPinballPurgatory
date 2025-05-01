@@ -23,7 +23,16 @@ public class ShowInfo : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
         //Debug.Log("Pointer clicked UI element: " + gameObject.name);
         // Add code here to execute when the mouse enters the UI element
-        canSelect = false;
+        //add code here to send it to inventory list and object
+
+        if (canSelect)
+        {
+            QuarterInventory inventory = Object.FindAnyObjectByType<QuarterInventory>();
+
+            inventory.addQuarter(this.gameObject);
+
+            canSelect = false;
+        }
     }
 
     public void OnPointerExit(PointerEventData eventData)
