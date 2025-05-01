@@ -55,6 +55,10 @@ public class RoundManager : MonoBehaviour
                     Debug.Log("round increase");
                     increaseRound();
                 }
+                else
+                {
+                    resetBoardState();
+                }
 
                 if (currentlives <= 0)
                 {
@@ -141,5 +145,10 @@ public class RoundManager : MonoBehaviour
     private void setLives()
     {
         livesText.text = "Lives:\n" + currentlives;
+    }
+
+    public int getRound()
+    {
+        return roundNum;
     }
 }

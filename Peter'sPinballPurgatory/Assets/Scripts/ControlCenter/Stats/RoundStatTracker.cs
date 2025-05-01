@@ -82,4 +82,9 @@ public class RoundStatTracker : MonoBehaviour
     {
         return died;
     }
+
+    public int getRound()
+    {
+        return GetComponent<RoundManager>().getRound();
+    }
 }

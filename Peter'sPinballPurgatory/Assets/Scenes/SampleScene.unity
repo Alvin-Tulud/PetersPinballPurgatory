@@ -2284,6 +2284,7 @@ GameObject:
   - component: {fileID: 1963815387}
   - component: {fileID: 1963815390}
   - component: {fileID: 1963815389}
+  - component: {fileID: 1963815391}
   m_Layer: 0
   m_Name: GameTracker
   m_TagString: Untagged
@@ -2395,6 +2396,18 @@ MonoBehaviour:
   - {fileID: 480949172}
   - {fileID: 491371980}
   - {fileID: 1203981087}
+--- !u!114 &1963815391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1963815384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6dc47f9371f532d4db157cf48e44bd36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &2098297005 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6673665606049661742, guid: 0830cdcd516d6e5429109de519830c33, type: 3}
