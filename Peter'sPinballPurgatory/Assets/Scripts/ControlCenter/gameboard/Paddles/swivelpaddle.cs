@@ -60,7 +60,7 @@ public class swivelpaddle : MonoBehaviour
 
         float rand = Random.Range(0f, 1f);;
 
-        if (rand > 0.5f)
+        if (rand > 0.4f)
         {
             startswing = true;
             swingin = true;
