@@ -33,7 +33,7 @@ public class DoubleTrouble : QuarterAbstract
             doOnce = false;
         }
 
-        if (stats.isDead())
+        if (stats.getBumps() == 0)
         {
             doOnce = true;
         }

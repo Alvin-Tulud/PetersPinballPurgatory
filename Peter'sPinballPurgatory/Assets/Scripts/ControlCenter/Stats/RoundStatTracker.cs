@@ -9,8 +9,6 @@ public class RoundStatTracker : MonoBehaviour
     private float seconds;
 
     private int highestbumper;
-
-    private bool checkedBump, checkedDead;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -26,9 +24,6 @@ public class RoundStatTracker : MonoBehaviour
         seconds = Time.unscaledTime;
 
         seconds = (float) Math.Round(seconds, 2, MidpointRounding.ToEven);
-
-        checkedBump = true;
-        checkedDead = true;
     }
 
     public void setHighestBumper()
@@ -62,15 +57,11 @@ public class RoundStatTracker : MonoBehaviour
         }
 
         bumps++;
-
-        checkedBump = false;
     }
 
     public void setDead()
     {
         died = true;
-
-        checkedDead = false;
     }
 
     public int getBumps()

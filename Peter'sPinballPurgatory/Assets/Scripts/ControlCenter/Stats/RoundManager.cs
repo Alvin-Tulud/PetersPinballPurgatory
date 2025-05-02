@@ -26,6 +26,8 @@ public class RoundManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        Application.targetFrameRate = 60;
+
         roundNum = 0;
         minBumperScore = 1;
 
@@ -40,7 +42,7 @@ public class RoundManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        foreach(killPlayer player in killBoxes)
+        foreach (killPlayer player in killBoxes)
         {
             if (player.getState())
             {
@@ -70,6 +72,8 @@ public class RoundManager : MonoBehaviour
 
     public void resetBoardState()
     {
+        GetComponent<RoundStatTracker>().setDead();
+
         Instantiate(playerPrefab, playerinitPos, Quaternion.Euler(90f, 270f, 180f));
 
         Camera.main.GetComponent<CameraFollow>().setPlayerPos();
@@ -77,6 +81,8 @@ public class RoundManager : MonoBehaviour
         GameObject.Find("launchwalltrigger").GetComponent<flipwalloff>().resetwall();
 
         GetComponent<ScoreTracker>().resetScore();
+
+        GetComponent<RoundStatTracker>().resetStats();
 
         setBumpers();
     }
@@ -123,7 +129,7 @@ public class RoundManager : MonoBehaviour
             //Debug.Log("score:" + bumperScores[i]);
         }
 
-        setScore( Mathf.FloorToInt( (maxScore / 2) * (1 + (roundNum * 0.2f) ) ) );
+        setScore(Mathf.FloorToInt((maxScore / 2) * (1 + (roundNum * 0.2f))));
 
 
         bumperScores = bumperScores.OrderBy(x => Random.value).ToList();
