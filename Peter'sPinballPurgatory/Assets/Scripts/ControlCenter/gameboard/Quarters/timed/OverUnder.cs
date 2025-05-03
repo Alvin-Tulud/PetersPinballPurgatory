@@ -1,20 +1,23 @@
-using NUnit.Framework;
 using System.Collections;
 using UnityEngine;
+using static QuarterAbstract;
 
-public class DoubleTrouble : QuarterAbstract
+public class OverUnder : QuarterAbstract
 {
     public int count;
     public raritytype rarity;
     private RoundStatTracker stats;
 
     private bool doOnce;
+    private bool canCheck;
 
     private void Awake()
     {
         stats = FindAnyObjectByType<RoundStatTracker>();
 
         doOnce = true;
+
+        canCheck = true;
     }
 
     private void Update()
@@ -24,35 +27,43 @@ public class DoubleTrouble : QuarterAbstract
 
     public override void checkTrigger()
     {
-        if (doOnce && stats.getBumps() == 1)
+        if (doOnce && stats.getHasLaunched() && canCheck)
         {
-            Debug.Log("Check trigger doubletrouble");
+            StartCoroutine(every1second());
+        }
 
-            doEffect();
-
+        if (stats.isDead())
+        {
             doOnce = false;
         }
+    }
 
-        if (stats.getBumps() == 0)
-        {
-            doOnce = true;
-        }
+    IEnumerator every1second()
+    {
+        canCheck = false;
+
+        Debug.Log("Check trigger overunder");
+
+        doEffect();
+
+        yield return new WaitForSeconds(1f);
+
+        canCheck = true;
     }
 
     public override void doEffect()
     {
-        Debug.Log("Check effect doubletrouble");
+        Debug.Log("Check effect overunder");
 
         BumperStats[] bstats = FindObjectsByType<BumperStats>(FindObjectsSortMode.None);
 
-        for (int i = 0; i < stats.getRound(); i++)
-        {
-            int randBumper = Random.Range(0, bstats.Length);
+        int randBumper = Random.Range(0, bstats.Length);
 
-            bstats[randBumper].updateScore(effect.Double);
+        bstats[randBumper].updateScore(effect.Double);
 
-            Debug.Log(bstats[randBumper].name + ": " + bstats[randBumper].getScore());
-        }
+        randBumper = Random.Range(0, bstats.Length);
+
+        bstats[randBumper].updateScore(effect.Halve);
     }
 
     public override int getRarity()

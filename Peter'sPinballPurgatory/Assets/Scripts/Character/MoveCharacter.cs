@@ -17,6 +17,7 @@ public class MoveCharacter : MonoBehaviour
     public bool moved;
 
     private bool canLaunch;
+    private bool hasLaunched;
     private bool needCap;
 
     Vector3 collisionPos;
@@ -31,6 +32,8 @@ public class MoveCharacter : MonoBehaviour
         rb = GetComponent<Rigidbody>();
 
         canLaunch = true;
+
+        hasLaunched = false;
 
         bumped = true;
     }
@@ -132,6 +135,13 @@ public class MoveCharacter : MonoBehaviour
             rb.AddForce(110f, 0f, 0f, ForceMode.Impulse);
 
             canLaunch = false;
+
+            hasLaunched = true;
         }
+    }
+
+    public bool getHasLaunched()
+    {
+        return hasLaunched;
     }
 }

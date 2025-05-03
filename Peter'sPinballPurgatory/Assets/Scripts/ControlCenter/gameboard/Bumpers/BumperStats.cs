@@ -16,7 +16,14 @@ public class BumperStats : MonoBehaviour
     {
         if (effect == effect.Halve)
         {
-            scoreValue = Mathf.FloorToInt(scoreValue / 2);
+            if (scoreValue == 1)
+            {
+                scoreValue = 1;
+            }
+            else
+            {
+                scoreValue = Mathf.FloorToInt(scoreValue / 2);
+            }
         }
         else if (effect == effect.Double)
         {

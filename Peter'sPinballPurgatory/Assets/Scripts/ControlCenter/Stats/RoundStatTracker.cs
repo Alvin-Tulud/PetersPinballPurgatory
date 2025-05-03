@@ -9,6 +9,7 @@ public class RoundStatTracker : MonoBehaviour
     private float seconds;
 
     private int highestbumper;
+    private bool hasLaunched;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -77,5 +78,15 @@ public class RoundStatTracker : MonoBehaviour
     public int getRound()
     {
         return GetComponent<RoundManager>().getRound();
+    }
+
+    public bool getHasLaunched()
+    {
+        if (FindAnyObjectByType<MoveCharacter>())
+        {
+            return FindAnyObjectByType<MoveCharacter>().getHasLaunched();
+        }
+
+        return false;
     }
 }
