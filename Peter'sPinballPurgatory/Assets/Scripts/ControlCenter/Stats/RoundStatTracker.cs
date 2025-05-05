@@ -1,22 +1,19 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class RoundStatTracker : MonoBehaviour
 {
-    private int bumps;
+    private long bumps;
     private bool died, firsthit, firsthithighest;
     private float seconds;
 
-    private int highestbumper;
+    private long highestbumper;
+    private bool hasLaunched;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         resetStats();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public void resetStats()
@@ -25,14 +22,16 @@ public class RoundStatTracker : MonoBehaviour
         died = false;
         firsthit = false;
         firsthithighest = false;
-        seconds = 0;
+        seconds = Time.unscaledTime;
+
+        seconds = (float) Math.Round(seconds, 2, MidpointRounding.ToEven);
     }
 
     public void setHighestBumper()
     {
         BumperStats[] stats = FindObjectsByType<BumperStats>(FindObjectsSortMode.None);
 
-        int highest = 0;
+        long highest = 0;
         highestbumper = highest;
 
         foreach(BumperStats stat in stats)
@@ -64,5 +63,30 @@ public class RoundStatTracker : MonoBehaviour
     public void setDead()
     {
         died = true;
+    }
+
+    public long getBumps()
+    {
+        return bumps;
+    }
+
+    public bool isDead()
+    {
+        return died;
+    }
+
+    public int getRound()
+    {
+        return GetComponent<RoundManager>().getRound();
+    }
+
+    public bool getHasLaunched()
+    {
+        if (FindAnyObjectByType<MoveCharacter>())
+        {
+            return FindAnyObjectByType<MoveCharacter>().getHasLaunched();
+        }
+
+        return false;
     }
 }

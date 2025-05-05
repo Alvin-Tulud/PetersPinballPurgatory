@@ -11,26 +11,34 @@ public class ShowInfo : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         Info.SetActive(false);
         canSelect = true;
     }
+
     public void OnPointerEnter(PointerEventData eventData)
     {
-        //Debug.Log("Pointer entered UI element: " + gameObject.name);
-        // Add code here to execute when the mouse enters the UI element
+        Debug.Log("hovering: " + gameObject.name);
+
         Info.SetActive(true);
-        Info.GetComponent<Canvas>().sortingOrder = 2;
     }
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        //Debug.Log("Pointer clicked UI element: " + gameObject.name);
-        // Add code here to execute when the mouse enters the UI element
-        canSelect = false;
+        Debug.Log("clicked: " + gameObject.name);
+        //add code here to send it to inventory list and object
+        if (canSelect)
+        {
+            canSelect = false;
+
+            QuarterInventory inventory = FindAnyObjectByType<QuarterInventory>();
+
+            inventory.addQuarter(this.gameObject);
+
+            ShopSetter shop = FindAnyObjectByType<ShopSetter>();
+
+            shop.exitShop(this.gameObject);
+        }
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        //Debug.Log("Pointer exited UI element: " + gameObject.name);
-        // Add code here to execute when the mouse exits the UI element
-        Info.GetComponent<Canvas>().sortingOrder = 1;
         Info.SetActive(false);
     }
 
