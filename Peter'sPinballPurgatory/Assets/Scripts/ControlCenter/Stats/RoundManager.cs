@@ -129,7 +129,14 @@ public class RoundManager : MonoBehaviour
             //Debug.Log("score:" + bumperScores[i]);
         }
 
-        setScore(Mathf.FloorToInt((maxScore / 2) * (1 + (roundNum * 0.2f))));
+        if (roundNum == 0)
+        {
+            setScore(8);
+        }
+        else
+        {
+            setScore(Mathf.FloorToInt(Mathf.Pow(maxScore / 4, (roundNum * 0.2f)) + (maxScore / 2) * (1 + (roundNum * 0.4f))));
+        }
 
 
         bumperScores = bumperScores.OrderBy(x => Random.value).ToList();
