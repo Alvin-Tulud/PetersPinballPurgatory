@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Numerics;
 using UnityEngine;
 
 public class BumperSetter : MonoBehaviour
@@ -8,7 +9,7 @@ public class BumperSetter : MonoBehaviour
     public int maxBumpers;
     private int currentBumperCount;
     
-    public void setBumpers(List<int> bumperScores)
+    public void setBumpers(List<BigInteger> bumperScores)
     {
         currentBumperCount = 0;
 

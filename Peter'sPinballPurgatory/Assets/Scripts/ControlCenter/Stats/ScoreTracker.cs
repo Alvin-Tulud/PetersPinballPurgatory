@@ -1,11 +1,12 @@
 using UnityEngine;
 using TMPro;
+using System.Numerics;
 
 public class ScoreTracker : MonoBehaviour
 {
     public TextMeshProUGUI scoreText;
-    private static long score;
-    private static long scoreMax;
+    private static BigInteger score;
+    private static BigInteger scoreMax;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -18,13 +19,13 @@ public class ScoreTracker : MonoBehaviour
         setText();
     }
 
-    public void AddScore(long add)
+    public void AddScore(BigInteger add)
     {
         score += add;
         setText();
     }
 
-    public void SetMaxScore(long max)
+    public void SetMaxScore(BigInteger max)
     {
         scoreMax = max;
     }
@@ -39,7 +40,7 @@ public class ScoreTracker : MonoBehaviour
         scoreText.text = "Score:\n" + score + "/" + scoreMax;
     }
 
-    public long getScore()
+    public BigInteger getScore()
     {
         return score;
     }

@@ -5,6 +5,8 @@ public class GumGum : QuarterAbstract
 {
     private RoundStatTracker stats;
 
+    private int bumps;
+
     private bool doOnce;
     private bool canCheck;
 
@@ -15,6 +17,8 @@ public class GumGum : QuarterAbstract
         doOnce = true;
 
         canCheck = true;
+
+        bumps = 0;
     }
 
     private void Update()
@@ -24,42 +28,25 @@ public class GumGum : QuarterAbstract
 
     public override void checkTrigger()
     {
-        if (doOnce && stats.getHasLaunched() && canCheck)
+        if (stats.getHasLaunched() && bumps < stats.getBumps())
         {
-            StartCoroutine(every1second());
+            bumps++;
+
+            doEffect();
         }
 
-        if (stats.isDead())
+        if (!stats.getHasLaunched())
         {
-            doOnce = false;
+            bumps = 0;
         }
-    }
-
-    IEnumerator every1second()
-    {
-        canCheck = false;
-
-        Debug.Log("Check trigger overunder");
-
-        doEffect();
-
-        yield return new WaitForSeconds(1f);
-
-        canCheck = true;
     }
 
     public override void doEffect()
     {
         Debug.Log("Check effect overunder");
+        
+        ScoreTracker score = FindAnyObjectByType<ScoreTracker>();
 
-        BumperStats[] bstats = FindObjectsByType<BumperStats>(FindObjectsSortMode.None);
-
-        int randBumper = Random.Range(0, bstats.Length);
-
-        bstats[randBumper].updateScore(effect.Double);
-
-        randBumper = Random.Range(0, bstats.Length);
-
-        bstats[randBumper].updateScore(effect.Halve);
+        score.AddScore(bumps);
     }
 }

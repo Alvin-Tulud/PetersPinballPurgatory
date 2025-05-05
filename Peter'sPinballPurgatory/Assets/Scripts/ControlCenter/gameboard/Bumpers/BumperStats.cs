@@ -1,10 +1,11 @@
 using UnityEngine;
 using TMPro;
+using System.Numerics;
 
 public class BumperStats : MonoBehaviour
 {
     public TextMeshProUGUI scoreText;
-    public long scoreValue;
+    public BigInteger scoreValue;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -30,7 +31,7 @@ public class BumperStats : MonoBehaviour
             }
             else
             {
-                scoreValue = Mathf.FloorToInt(scoreValue / 2);
+                scoreValue = Mathf.FloorToInt(((float)scoreValue) / 2);
             }
         }
         else if (effect == effect.Double)
@@ -41,12 +42,12 @@ public class BumperStats : MonoBehaviour
         scoreText.text = scoreValue.ToString();
     }
 
-    public long getScore()
+    public BigInteger getScore()
     {
         return scoreValue;
     }
 
-    public void setScore(int score)
+    public void setScore(BigInteger score)
     {
         scoreValue = score;
         updateScore(effect.None);

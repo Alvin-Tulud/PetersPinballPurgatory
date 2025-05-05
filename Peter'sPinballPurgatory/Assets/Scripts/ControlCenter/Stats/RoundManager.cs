@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -12,7 +13,7 @@ public class RoundManager : MonoBehaviour
     private bool roundPassed;
     private int timesScorePassed;
 
-    public Vector3 playerinitPos;
+    public UnityEngine.Vector3 playerinitPos;
     public GameObject playerPrefab;
 
     public TextMeshProUGUI roundText;
@@ -74,7 +75,7 @@ public class RoundManager : MonoBehaviour
     {
         GetComponent<RoundStatTracker>().setDead();
 
-        Instantiate(playerPrefab, playerinitPos, Quaternion.Euler(90f, 270f, 180f));
+        Instantiate(playerPrefab, playerinitPos, UnityEngine.Quaternion.Euler(90f, 270f, 180f));
 
         Camera.main.GetComponent<CameraFollow>().setPlayerPos();
 
@@ -102,9 +103,9 @@ public class RoundManager : MonoBehaviour
 
     private void setBumpers()
     {
-        List<int> bumperScores = new List<int>();
+        List<BigInteger> bumperScores = new List<BigInteger>();
 
-        int maxScore = 0;
+        BigInteger maxScore = 0;
 
         for (int i = 0; i < 7; i++)
         {
@@ -135,7 +136,7 @@ public class RoundManager : MonoBehaviour
         }
         else
         {
-            setScore(Mathf.FloorToInt(Mathf.Pow(maxScore / 4, (roundNum * 0.2f)) + (maxScore / 2) * (1 + (roundNum * 0.4f))));
+            setScore(Mathf.FloorToInt(Mathf.Pow(((float)maxScore) / 4, (roundNum * 0.2f)) + (((float)maxScore) / 2) * (1 + (roundNum * 0.4f))));
         }
 
 
