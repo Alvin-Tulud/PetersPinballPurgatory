@@ -186,6 +186,7 @@ GameObject:
   - component: {fileID: 4437510796749254098}
   - component: {fileID: 8384857715758034848}
   - component: {fileID: 8346875028680601736}
+  - component: {fileID: 8545216524689880112}
   - component: {fileID: 8374235501859584497}
   m_Layer: 0
   m_Name: DoubleTrouble
@@ -266,6 +267,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Info: {fileID: 2239775661200583941}
+--- !u!114 &8545216524689880112
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2931125221266815741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01fc5ee3a86017840a23458f95f743a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rarity: 70
 --- !u!114 &8374235501859584497
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -278,8 +292,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad2f3b9b32e377a44a9c152e66ace1cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  count: 0
-  rarity: 0
 --- !u!1 &7283757085151397592
 GameObject:
   m_ObjectHideFlags: 0

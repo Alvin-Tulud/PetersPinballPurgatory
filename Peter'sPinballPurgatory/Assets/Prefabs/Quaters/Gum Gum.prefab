@@ -227,6 +227,7 @@ GameObject:
   - component: {fileID: 8962731105323677625}
   - component: {fileID: 8317375943448607278}
   - component: {fileID: 4453481351407981}
+  - component: {fileID: 4024041163509430754}
   - component: {fileID: 8360935010467198461}
   m_Layer: 0
   m_Name: Gum Gum
@@ -307,6 +308,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Info: {fileID: 7183159340849346038}
+--- !u!114 &4024041163509430754
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6484648612117355964}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01fc5ee3a86017840a23458f95f743a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rarity: 70
 --- !u!114 &8360935010467198461
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -4,8 +4,6 @@ using static QuarterAbstract;
 
 public class OverUnder : QuarterAbstract
 {
-    public int count;
-    public raritytype rarity;
     private RoundStatTracker stats;
 
     private bool doOnce;
@@ -64,21 +62,5 @@ public class OverUnder : QuarterAbstract
         randBumper = Random.Range(0, bstats.Length);
 
         bstats[randBumper].updateScore(effect.Halve);
-    }
-
-    public override int getRarity()
-    {
-        if (rarity == raritytype.common)
-        {
-            return 70;
-        }
-        else if (rarity == raritytype.uncommon)
-        {
-            return 20;
-        }
-        else
-        {
-            return 10;
-        }
     }
 }

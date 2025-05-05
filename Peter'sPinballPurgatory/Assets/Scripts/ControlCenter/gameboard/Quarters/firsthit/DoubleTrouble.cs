@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class DoubleTrouble : QuarterAbstract
 {
-    public int count;
-    public raritytype rarity;
     private RoundStatTracker stats;
 
     private bool doOnce;
@@ -52,22 +50,6 @@ public class DoubleTrouble : QuarterAbstract
             bstats[randBumper].updateScore(effect.Double);
 
             Debug.Log(bstats[randBumper].name + ": " + bstats[randBumper].getScore());
-        }
-    }
-
-    public override int getRarity()
-    {
-        if (rarity == raritytype.common)
-        {
-            return 70;
-        }
-        else if (rarity == raritytype.uncommon)
-        {
-            return 20;
-        }
-        else
-        {
-            return 10;
         }
     }
 }
