@@ -8,7 +8,7 @@ public class ShopSetter : MonoBehaviour
     private List<GameObject> ItemsForSale;
 
     public GameObject Shop;
-    public List<Transform> ShopSlots;
+    public Transform ShopSlot;
 
     private void Awake()
     {
@@ -38,13 +38,11 @@ public class ShopSetter : MonoBehaviour
         Shop.SetActive(true);
         //randomly spawn 3 items
 
-        for(int i = 0; i < ShopSlots.Count; i++)
+        for(int i = 0; i < 3; i++)
         {
-            Transform t = ShopSlots[i];
-
             for(int j = 0; j < AllShopItems.Count; j++)
             {
-                if (i + 1 <= ShopSlots.Count && j + 1 < AllShopItems.Count)
+                if (i + 1 <= 3 && j + 1 < AllShopItems.Count)
                 {
                     int rand = Random.Range(0, 101);
 
@@ -53,7 +51,7 @@ public class ShopSetter : MonoBehaviour
                     if (rand < AllShopItems[j].GetComponent<Rarity>().getRarity())
                     {
                         GameObject g = Instantiate(AllShopItems[j]);
-                        g.transform.SetParent(t.transform, false);
+                        g.transform.SetParent(ShopSlot.transform, false);
 
                         Debug.Log(g.name);
 
@@ -65,7 +63,7 @@ public class ShopSetter : MonoBehaviour
                 else
                 {
                     GameObject g = Instantiate(AllShopItems[j]);
-                    g.transform.SetParent(t.transform, false);
+                    g.transform.SetParent(ShopSlot.transform, false);
 
                     Debug.Log(g.name);
 

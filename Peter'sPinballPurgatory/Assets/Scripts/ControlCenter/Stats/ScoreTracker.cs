@@ -4,8 +4,8 @@ using TMPro;
 public class ScoreTracker : MonoBehaviour
 {
     public TextMeshProUGUI scoreText;
-    private static int score;
-    private static int scoreMax;
+    private static long score;
+    private static long scoreMax;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -18,13 +18,13 @@ public class ScoreTracker : MonoBehaviour
         setText();
     }
 
-    public void AddScore(int add)
+    public void AddScore(long add)
     {
         score += add;
         setText();
     }
 
-    public void SetMaxScore(int max)
+    public void SetMaxScore(long max)
     {
         scoreMax = max;
     }
@@ -39,7 +39,7 @@ public class ScoreTracker : MonoBehaviour
         scoreText.text = "Score:\n" + score + "/" + scoreMax;
     }
 
-    public int getScore()
+    public long getScore()
     {
         return score;
     }

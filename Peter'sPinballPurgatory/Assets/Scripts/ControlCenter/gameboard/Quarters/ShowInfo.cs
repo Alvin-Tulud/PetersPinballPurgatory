@@ -25,6 +25,8 @@ public class ShowInfo : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         //add code here to send it to inventory list and object
         if (canSelect)
         {
+            canSelect = false;
+
             QuarterInventory inventory = FindAnyObjectByType<QuarterInventory>();
 
             inventory.addQuarter(this.gameObject);
@@ -32,8 +34,6 @@ public class ShowInfo : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
             ShopSetter shop = FindAnyObjectByType<ShopSetter>();
 
             shop.exitShop(this.gameObject);
-
-            canSelect = false;
         }
     }
 

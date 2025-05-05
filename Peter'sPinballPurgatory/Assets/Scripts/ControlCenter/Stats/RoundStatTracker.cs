@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class RoundStatTracker : MonoBehaviour
 {
-    private int bumps;
+    private long bumps;
     private bool died, firsthit, firsthithighest;
     private float seconds;
 
-    private int highestbumper;
+    private long highestbumper;
     private bool hasLaunched;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -31,7 +31,7 @@ public class RoundStatTracker : MonoBehaviour
     {
         BumperStats[] stats = FindObjectsByType<BumperStats>(FindObjectsSortMode.None);
 
-        int highest = 0;
+        long highest = 0;
         highestbumper = highest;
 
         foreach(BumperStats stat in stats)
@@ -65,7 +65,7 @@ public class RoundStatTracker : MonoBehaviour
         died = true;
     }
 
-    public int getBumps()
+    public long getBumps()
     {
         return bumps;
     }
