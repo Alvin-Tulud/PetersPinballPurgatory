@@ -6,7 +6,7 @@ public class Rarity : MonoBehaviour
 
     public int getRarity()
     {
-        Debug.Log((int)rarity);
+        //Debug.Log((int)rarity);
         return (int)rarity;
     }
 }

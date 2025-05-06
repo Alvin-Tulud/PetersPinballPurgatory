@@ -43,7 +43,7 @@ public class GumGum : QuarterAbstract
 
     public override void doEffect()
     {
-        Debug.Log("Check effect overunder");
+        Debug.Log("do effect gum gum: " + bumps);
         
         ScoreTracker score = FindAnyObjectByType<ScoreTracker>();
 

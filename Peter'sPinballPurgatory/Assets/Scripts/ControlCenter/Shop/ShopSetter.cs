@@ -53,7 +53,7 @@ public class ShopSetter : MonoBehaviour
                         GameObject g = Instantiate(AllShopItems[j]);
                         g.transform.SetParent(ShopSlot.transform, false);
 
-                        Debug.Log(g.name);
+                        //Debug.Log(g.name);
 
                         ItemsForSale.Add(g);
 
@@ -65,7 +65,7 @@ public class ShopSetter : MonoBehaviour
                     GameObject g = Instantiate(AllShopItems[j]);
                     g.transform.SetParent(ShopSlot.transform, false);
 
-                    Debug.Log(g.name);
+                    //Debug.Log(g.name);
 
                     ItemsForSale.Add(g);
 

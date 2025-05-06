@@ -2448,7 +2448,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a438c623e7052a545a8613b944d65bfb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Quarters: []
   InventoryDisplay: {fileID: 377497595}
 --- !u!114 &1963815390
 MonoBehaviour:
@@ -2466,6 +2465,7 @@ MonoBehaviour:
   - {fileID: 2931125221266815741, guid: 7d0c356435f9ed94494e3229f63f5484, type: 3}
   - {fileID: 6484648612117355964, guid: abc3fb43b0ad86643a171077c5944940, type: 3}
   - {fileID: 165731566479133081, guid: 73d5058e3edeb8742be2855b7024e6cc, type: 3}
+  - {fileID: 3021914885098832789, guid: a565636658e9c76419864bb76c0660ae, type: 3}
   Shop: {fileID: 162027105}
   ShopSlot: {fileID: 751318742}
 --- !u!114 &1963815391

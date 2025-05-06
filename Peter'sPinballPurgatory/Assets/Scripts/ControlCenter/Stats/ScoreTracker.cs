@@ -44,4 +44,9 @@ public class ScoreTracker : MonoBehaviour
     {
         return score;
     }
+
+    public BigInteger getMaxScore()
+    {
+        return scoreMax;
+    }
 }
