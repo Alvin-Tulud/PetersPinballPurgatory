@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Numerics;
 using UnityEngine;
 
 public class RoundStatTracker : MonoBehaviour
@@ -8,7 +9,7 @@ public class RoundStatTracker : MonoBehaviour
     private bool died, firsthit, firsthithighest;
     private float seconds;
 
-    private long highestbumper;
+    private BigInteger highestbumper;
     private bool hasLaunched;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -31,7 +32,7 @@ public class RoundStatTracker : MonoBehaviour
     {
         BumperStats[] stats = FindObjectsByType<BumperStats>(FindObjectsSortMode.None);
 
-        long highest = 0;
+        BigInteger highest = 0;
         highestbumper = highest;
 
         foreach(BumperStats stat in stats)

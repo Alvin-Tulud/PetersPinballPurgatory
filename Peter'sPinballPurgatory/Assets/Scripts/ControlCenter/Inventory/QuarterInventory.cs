@@ -3,8 +3,13 @@ using UnityEngine;
 
 public class QuarterInventory : MonoBehaviour
 {
-    public List<GameObject> Quarters;
+    private List<GameObject> Quarters;
     public GameObject InventoryDisplay;
+
+    private void Start()
+    {
+        Quarters = new List<GameObject>();
+    }
 
     public void addQuarter(GameObject Quarter)
     {
