@@ -229,8 +229,6 @@ GameObject:
   - component: {fileID: 4453481351407981}
   - component: {fileID: 4024041163509430754}
   - component: {fileID: 8360935010467198461}
-  - component: {fileID: -9108948065167927313}
-  - component: {fileID: -8681883900314505304}
   m_Layer: 0
   m_Name: Gum Gum
   m_TagString: Untagged
@@ -335,44 +333,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58f4d8e2a3ee21a469b30eabdb4a6d37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!111 &-9108948065167927313
-Animation:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6484648612117355964}
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Animation: {fileID: 7400000, guid: 1316d7cdfcd9a2244b4126ebaac309b9, type: 2}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_UpdateMode: 0
-  m_CullingType: 0
---- !u!95 &-8681883900314505304
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6484648612117355964}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: adcc9c3ea2cdaaf4188685a3934c2e02, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &6510779301788645291
 GameObject:
   m_ObjectHideFlags: 0
@@ -570,15 +530,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2212c551fabcc6547af0f2f16e26b451, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -20
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2212c551fabcc6547af0f2f16e26b451, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2212c551fabcc6547af0f2f16e26b451, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1
+      value: 70
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2212c551fabcc6547af0f2f16e26b451, type: 3}
       propertyPath: m_LocalRotation.w
@@ -619,10 +579,40 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8164078558771037576, guid: 2212c551fabcc6547af0f2f16e26b451, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4766669663111212452}
   m_SourcePrefab: {fileID: 100100000, guid: 2212c551fabcc6547af0f2f16e26b451, type: 3}
 --- !u!4 &3770776858657413714 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 2212c551fabcc6547af0f2f16e26b451, type: 3}
   m_PrefabInstance: {fileID: 3737641269077523897}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &4797009664302315569 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8164078558771037576, guid: 2212c551fabcc6547af0f2f16e26b451, type: 3}
+  m_PrefabInstance: {fileID: 3737641269077523897}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &4766669663111212452
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4797009664302315569}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: adcc9c3ea2cdaaf4188685a3934c2e02, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
