@@ -7,16 +7,9 @@ public class GumGum : QuarterAbstract
 
     private int bumps;
 
-    private bool doOnce;
-    private bool canCheck;
-
     private void Awake()
     {
         stats = FindAnyObjectByType<RoundStatTracker>();
-
-        doOnce = true;
-
-        canCheck = true;
 
         bumps = 0;
     }
@@ -28,14 +21,14 @@ public class GumGum : QuarterAbstract
 
     public override void checkTrigger()
     {
-        if (stats.getHasLaunched() && bumps < stats.getBumps())
+        if (stats.getHasLaunched() && bumps < stats.getBumps() && !stats.isDead())
         {
             bumps++;
 
             doEffect();
         }
 
-        if (!stats.getHasLaunched())
+        if (stats.isRoundOver())
         {
             bumps = 0;
         }
@@ -44,6 +37,8 @@ public class GumGum : QuarterAbstract
     public override void doEffect()
     {
         Debug.Log("do effect gum gum: " + bumps);
+
+        GetComponent<CheckActive>().setActive();
         
         ScoreTracker score = FindAnyObjectByType<ScoreTracker>();
 

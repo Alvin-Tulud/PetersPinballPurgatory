@@ -14,14 +14,14 @@ public class ShowInfo : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        Debug.Log("hovering: " + gameObject.name);
+        //Debug.Log("hovering: " + gameObject.name);
 
         Info.SetActive(true);
     }
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        Debug.Log("clicked: " + gameObject.name);
+        //Debug.Log("clicked: " + gameObject.name);
         //add code here to send it to inventory list and object
         if (canSelect)
         {

@@ -43,38 +43,67 @@ public class RoundManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        checkRoundOver();
+    }
+
+    private void checkRoundOver()
+    {
+        bool playerdead = false;
+
         foreach (killPlayer player in killBoxes)
         {
             if (player.getState())
             {
+                GetComponent<RoundStatTracker>().setDead();
+
+                playerdead = true;
+            }
+        }
+
+        List<GameObject> quarter = GetComponent<QuarterInventory>().getQuarters();
+
+        bool quartersActive = false;
+
+        foreach (GameObject g in quarter)
+        {
+            if (g.GetComponent<CheckActive>().getActive())
+            {
+                quartersActive = true;
+            }
+        }
+
+        if (!quartersActive && playerdead)
+        {
+            foreach (killPlayer player in killBoxes)
+            {
                 player.setState();
+            }
 
-                currentlives--;
+            GetComponent<RoundStatTracker>().setRoundOver();
 
-                setLives();
+            currentlives--;
 
-                if (GetComponent<ScoreTracker>().checkPass())
-                {
-                    Debug.Log("round increase");
-                    increaseRound();
-                }
-                else
-                {
-                    resetBoardState();
-                }
+            setLives();
 
-                if (currentlives <= 0)
-                {
-                    SceneManager.LoadScene(0);
-                }
+            if (GetComponent<ScoreTracker>().checkPass())
+            {
+                Debug.Log("round increase");
+                increaseRound();
+            }
+            else
+            {
+                resetBoardState();
+            }
+
+            if (currentlives <= 0)
+            {
+                SceneManager.LoadScene(0);
             }
         }
     }
 
     public void resetBoardState()
     {
-        GetComponent<RoundStatTracker>().setDead();
-
         Instantiate(playerPrefab, playerinitPos, UnityEngine.Quaternion.Euler(90f, 270f, 180f));
 
         Camera.main.GetComponent<CameraFollow>().setPlayerPos();

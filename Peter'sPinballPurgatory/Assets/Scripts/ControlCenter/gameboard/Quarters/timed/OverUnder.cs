@@ -25,14 +25,9 @@ public class OverUnder : QuarterAbstract
 
     public override void checkTrigger()
     {
-        if (doOnce && stats.getHasLaunched() && canCheck)
+        if (stats.getHasLaunched() && canCheck && !stats.isDead())
         {
             StartCoroutine(every1second());
-        }
-
-        if (stats.isDead())
-        {
-            doOnce = false;
         }
     }
 
@@ -52,6 +47,8 @@ public class OverUnder : QuarterAbstract
     public override void doEffect()
     {
         Debug.Log("Check effect overunder");
+
+        GetComponent<CheckActive>().setActive();
 
         BumperStats[] bstats = FindObjectsByType<BumperStats>(FindObjectsSortMode.None);
 

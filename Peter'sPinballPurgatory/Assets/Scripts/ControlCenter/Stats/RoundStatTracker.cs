@@ -11,6 +11,7 @@ public class RoundStatTracker : MonoBehaviour
 
     private BigInteger highestbumper;
     private bool hasLaunched;
+    private bool roundOver;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -24,6 +25,8 @@ public class RoundStatTracker : MonoBehaviour
         firsthit = false;
         firsthithighest = false;
         seconds = Time.unscaledTime;
+
+        roundOver = false;
 
         seconds = (float) Math.Round(seconds, 2, MidpointRounding.ToEven);
     }
@@ -74,6 +77,16 @@ public class RoundStatTracker : MonoBehaviour
     public bool isDead()
     {
         return died;
+    }
+
+    public void setRoundOver()
+    {
+        roundOver = true;
+    }
+
+    public bool isRoundOver()
+    {
+        return roundOver;
     }
 
     public int getRound()
