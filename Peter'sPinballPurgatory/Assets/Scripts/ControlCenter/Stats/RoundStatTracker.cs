@@ -162,4 +162,9 @@ public class RoundStatTracker : MonoBehaviour
             GetComponent<RoundManager>().setBumpers();
         }
     }
+
+    public bool getHasJumbled()
+    {
+        return hasJumbled;
+    }
 }
