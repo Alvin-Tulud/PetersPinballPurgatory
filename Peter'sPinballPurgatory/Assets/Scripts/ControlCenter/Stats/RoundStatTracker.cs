@@ -8,14 +8,27 @@ public class RoundStatTracker : MonoBehaviour
     private long bumps;
     private bool died, firsthit, firsthithighest;
     private float seconds;
+    private int deathCount;
 
     private BigInteger highestbumper;
     private bool hasLaunched;
     private bool roundOver;
+    private bool canResetTime;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         resetStats();
+    }
+
+    private void Update()
+    {
+        if (roundOver)
+        {
+            Debug.Log("it actually flips roundOver");
+        }
+
+        setStartTime();
     }
 
     public void resetStats()
@@ -24,11 +37,11 @@ public class RoundStatTracker : MonoBehaviour
         died = false;
         firsthit = false;
         firsthithighest = false;
-        seconds = Time.unscaledTime;
+        deathCount = 0;
 
         roundOver = false;
 
-        seconds = (float) Math.Round(seconds, 2, MidpointRounding.ToEven);
+        canResetTime = true;
     }
 
     public void setHighestBumper()
@@ -49,6 +62,18 @@ public class RoundStatTracker : MonoBehaviour
         highestbumper = highest;
     }
 
+    public void setStartTime()
+    {
+        if (canResetTime && FindAnyObjectByType<flipwalloff>().getwallPassed())
+        {
+            seconds = Time.unscaledTime;
+
+            seconds = (float)Math.Round(seconds, 2, MidpointRounding.ToEven);
+
+            canResetTime = false;
+        }
+    }
+
     public void AddBump()
     {
         if (!firsthit)
@@ -64,9 +89,15 @@ public class RoundStatTracker : MonoBehaviour
         bumps++;
     }
 
+    public float getTime()
+    {
+        return (float)Math.Round(Time.unscaledTime, 2, MidpointRounding.ToEven) - seconds;
+    }
+
     public void setDead()
     {
         died = true;
+        deathCount = FindAnyObjectByType<killPlayer>().getDeathCount();
     }
 
     public long getBumps()
@@ -77,6 +108,11 @@ public class RoundStatTracker : MonoBehaviour
     public bool isDead()
     {
         return died;
+    }
+
+    public int getDeathCount()
+    {
+        return deathCount;
     }
 
     public void setRoundOver()

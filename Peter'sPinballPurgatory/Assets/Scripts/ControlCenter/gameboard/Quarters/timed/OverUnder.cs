@@ -6,16 +6,9 @@ public class OverUnder : QuarterAbstract
 {
     private RoundStatTracker stats;
 
-    private bool doOnce;
-    private bool canCheck;
-
     private void Awake()
     {
         stats = FindAnyObjectByType<RoundStatTracker>();
-
-        doOnce = true;
-
-        canCheck = true;
     }
 
     private void Update()
@@ -25,23 +18,12 @@ public class OverUnder : QuarterAbstract
 
     public override void checkTrigger()
     {
-        if (stats.getHasLaunched() && canCheck && !stats.isDead())
+        if (stats.getHasLaunched() && !stats.isDead() && stats.getTime() % 1 == 0 && stats.getTime() > 0.1f)
         {
-            StartCoroutine(every1second());
+            Debug.Log("Check trigger overunder");
+
+            doEffect();
         }
-    }
-
-    IEnumerator every1second()
-    {
-        canCheck = false;
-
-        Debug.Log("Check trigger overunder");
-
-        doEffect();
-
-        yield return new WaitForSeconds(1f);
-
-        canCheck = true;
     }
 
     public override void doEffect()

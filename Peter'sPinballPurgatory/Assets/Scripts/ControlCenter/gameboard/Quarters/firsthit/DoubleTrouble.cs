@@ -5,6 +5,7 @@ using UnityEngine;
 public class DoubleTrouble : QuarterAbstract
 {
     private RoundStatTracker stats;
+    private bool doOnce;
 
     private void Awake()
     {
@@ -18,11 +19,17 @@ public class DoubleTrouble : QuarterAbstract
 
     public override void checkTrigger()
     {
-        if (stats.getBumps() == 1)
+        if (doOnce && stats.getBumps() == 1)
         {
+            doOnce = false;
             Debug.Log("Check trigger doubletrouble");
 
             doEffect();
+        }
+
+        if (stats.isRoundOver())
+        {
+            doOnce = true;
         }
     }
 

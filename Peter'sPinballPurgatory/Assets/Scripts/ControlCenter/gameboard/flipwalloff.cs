@@ -4,6 +4,8 @@ public class flipwalloff : MonoBehaviour
 {
     public GameObject launchwall;
 
+    private bool wallOn;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -18,6 +20,11 @@ public class flipwalloff : MonoBehaviour
 
             other.gameObject.GetComponent<MoveCharacter>().setCap(true);
         }
+    }
+
+    public bool getwallPassed()
+    {
+        return wallOn = launchwall.activeInHierarchy;
     }
 
     public void resetwall()

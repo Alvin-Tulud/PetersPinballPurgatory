@@ -21,7 +21,7 @@ public class BumperHit : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("FakePlayer"))
         {
             float randbumperforce = UnityEngine.Random.Range(bumperforcemin, bumperforcemax);
             Rigidbody rb = collision.gameObject.GetComponent<Rigidbody>();

@@ -8,6 +8,7 @@ TagManager:
   - Paddle
   - topScreen
   - BumperSpot
+  - FakePlayer
   layers:
   - Default
   - TransparentFX

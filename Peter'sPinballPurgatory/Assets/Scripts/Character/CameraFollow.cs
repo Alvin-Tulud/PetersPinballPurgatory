@@ -11,6 +11,7 @@ public class CameraFollow : MonoBehaviour
 
     private Vector3 offset, offestdie;
     public float smoothTime = 0.25f;
+    public float smoothTimeDie = 0.5f;
     private Vector3 velocity = Vector3.zero;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -33,7 +34,7 @@ public class CameraFollow : MonoBehaviour
         catch (System.Exception e)
         {
             Vector3 targetPosition = bumperMid.position + offestdie;
-            transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, smoothTime);
+            transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, smoothTimeDie);
         }
     }
 

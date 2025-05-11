@@ -4,10 +4,12 @@ using UnityEngine;
 public class TinyBig : QuarterAbstract
 {
     private RoundStatTracker stats;
+    private bool doOnce;
 
     private void Awake()
     {
         stats = FindAnyObjectByType<RoundStatTracker>();
+        doOnce = true;
     }
 
     private void Update()
@@ -17,11 +19,18 @@ public class TinyBig : QuarterAbstract
 
     public override void checkTrigger()
     {
-        if (stats.getBumps() == 1)
+        if (doOnce && stats.getBumps() == 1)
         {
+            doOnce = false;
+
             Debug.Log("Check trigger TinyBig");
 
             doEffect();
+        }
+
+        if (stats.isRoundOver())
+        {
+            doOnce = true;
         }
     }
 

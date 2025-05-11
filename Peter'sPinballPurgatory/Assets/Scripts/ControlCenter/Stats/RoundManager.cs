@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
@@ -24,6 +25,10 @@ public class RoundManager : MonoBehaviour
     private int currentlives;
 
     public TextMeshProUGUI livesText;
+
+    private bool canCheckRoundOver;
+
+    public TextMeshProUGUI timeText;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -38,12 +43,15 @@ public class RoundManager : MonoBehaviour
         currentlives = maxlives;
 
         setLives();
+
+        canCheckRoundOver = true;
     }
 
     // Update is called once per frame
     void Update()
     {
         checkRoundOver();
+        setTime();
     }
 
     private void checkRoundOver()
@@ -72,8 +80,24 @@ public class RoundManager : MonoBehaviour
             }
         }
 
-        if (!quartersActive && playerdead)
+        if (canCheckRoundOver)
         {
+            StartCoroutine(waitcheckRoundOver(quartersActive, playerdead));
+        }
+    }
+
+    IEnumerator waitcheckRoundOver(bool quartersActive, bool playerdead)
+    {
+        //Debug.Log("checking over: " + quartersActive + " " + playerdead);
+
+        canCheckRoundOver = false;
+
+        yield return new WaitForSeconds(1.5f);
+
+        if (!quartersActive && playerdead && !GameObject.FindWithTag("Player") && !GameObject.FindWithTag("FakePlayer"))
+        {
+            Debug.Log("round over");
+
             foreach (killPlayer player in killBoxes)
             {
                 player.setState();
@@ -100,6 +124,8 @@ public class RoundManager : MonoBehaviour
                 SceneManager.LoadScene(0);
             }
         }
+
+        canCheckRoundOver = true;
     }
 
     public void resetBoardState()
@@ -188,6 +214,19 @@ public class RoundManager : MonoBehaviour
     private void setLives()
     {
         livesText.text = "Lives:\n" + currentlives;
+    }
+
+    private void setTime()
+    {
+        if (FindAnyObjectByType<flipwalloff>().getwallPassed() && !GetComponent<RoundStatTracker>().isDead())
+        {
+            timeText.text = "Time:\n" + GetComponent<RoundStatTracker>().getTime().ToString("N");
+        }
+        else
+        {
+            timeText.text = "Time:\n0.00";
+        }
+        
     }
 
     public int getRound()
