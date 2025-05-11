@@ -18,7 +18,7 @@ public class OverUnder : QuarterAbstract
 
     public override void checkTrigger()
     {
-        if (stats.getHasLaunched() && !stats.isDead() && stats.getTime() % 1 == 0 && stats.getTime() > 0.1f)
+        if (stats.getHasLaunched() && !stats.isDead() && stats.getTime() % 1 == 0 && stats.getTime() > 0.1f && FindAnyObjectByType<flipwalloff>().getwallPassed())
         {
             Debug.Log("Check trigger overunder");
 

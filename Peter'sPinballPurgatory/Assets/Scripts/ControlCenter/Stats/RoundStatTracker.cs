@@ -28,9 +28,9 @@ public class RoundStatTracker : MonoBehaviour
 
     private void Update()
     {
-        if (roundOver)
+        if (getHasLaunched())
         {
-            //Debug.Log("it actually flips roundOver");
+            jumbleButton.interactable = false;
         }
 
         setStartTime();

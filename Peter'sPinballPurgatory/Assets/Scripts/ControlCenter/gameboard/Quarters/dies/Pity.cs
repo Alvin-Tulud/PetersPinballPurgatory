@@ -23,12 +23,12 @@ public class Pity : QuarterAbstract
         {
             Debug.Log("Check trigger pity");
 
-            doEffect();
-
             deathCount++;
+
+            doEffect();
         }
 
-        if (stats.isRoundOver())
+        if (!FindAnyObjectByType<flipwalloff>().getwallPassed())
         {
             deathCount = 0;
         }
