@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Numerics;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class RoundStatTracker : MonoBehaviour
 {
@@ -14,6 +15,10 @@ public class RoundStatTracker : MonoBehaviour
     private bool hasLaunched;
     private bool roundOver;
     private bool canResetTime;
+    private bool canJumble;
+    private bool hasJumbled;
+
+    public Button jumbleButton;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -25,7 +30,7 @@ public class RoundStatTracker : MonoBehaviour
     {
         if (roundOver)
         {
-            Debug.Log("it actually flips roundOver");
+            //Debug.Log("it actually flips roundOver");
         }
 
         setStartTime();
@@ -42,6 +47,10 @@ public class RoundStatTracker : MonoBehaviour
         roundOver = false;
 
         canResetTime = true;
+        canJumble = true;
+        hasJumbled = false;
+
+        jumbleButton.interactable = true;
     }
 
     public void setHighestBumper()
@@ -138,5 +147,19 @@ public class RoundStatTracker : MonoBehaviour
         }
 
         return false;
+    }
+
+    public void jumbleBumpers()
+    {
+        if (canJumble)
+        {
+            canJumble = false;
+
+            jumbleButton.interactable = false;
+
+            hasJumbled = true;
+
+            GetComponent<RoundManager>().setBumpers();
+        }
     }
 }

@@ -156,7 +156,7 @@ public class RoundManager : MonoBehaviour
         GetComponent<ShopSetter>().enterShop();
     }
 
-    private void setBumpers()
+    public void setBumpers()
     {
         List<BigInteger> bumperScores = new List<BigInteger>();
 
