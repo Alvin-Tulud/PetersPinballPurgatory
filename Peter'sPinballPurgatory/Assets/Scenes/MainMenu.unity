@@ -283,6 +283,7 @@ GameObject:
   m_Component:
   - component: {fileID: 415162889}
   - component: {fileID: 415162888}
+  - component: {fileID: 415162890}
   m_Layer: 0
   m_Name: MenuManager
   m_TagString: Untagged
@@ -318,6 +319,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &415162890
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 415162887}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 684ac44f328076d4c96f28e7cd301df0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &567730391
 GameObject:
   m_ObjectHideFlags: 0
@@ -939,9 +952,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 415162888}
-        m_TargetAssemblyTypeName: MainMenuManager, Assembly-CSharp
-        m_MethodName: StartGame
+      - m_Target: {fileID: 415162890}
+        m_TargetAssemblyTypeName: NextScene, Assembly-CSharp
+        m_MethodName: loadNextScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

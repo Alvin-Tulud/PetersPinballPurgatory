@@ -77,7 +77,7 @@ public class RoundStatTracker : MonoBehaviour
         {
             seconds = Time.unscaledTime;
 
-            seconds = (float)Math.Round(seconds, 2, MidpointRounding.ToEven);
+            seconds = (float)Math.Round(seconds, 2, MidpointRounding.AwayFromZero);
 
             canResetTime = false;
         }
@@ -100,7 +100,7 @@ public class RoundStatTracker : MonoBehaviour
 
     public float getTime()
     {
-        return (float)Math.Round(Time.unscaledTime, 2, MidpointRounding.ToEven) - seconds;
+        return (float)Math.Round(Time.unscaledTime, 2, MidpointRounding.AwayFromZero) - seconds;
     }
 
     public void setDead()
