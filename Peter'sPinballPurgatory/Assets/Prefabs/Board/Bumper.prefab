@@ -365,7 +365,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreText: {fileID: 1630913518495664519}
-  scoreValue: 10
 --- !u!114 &7945250874900218463
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -399,7 +398,7 @@ AudioSource:
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 64
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
