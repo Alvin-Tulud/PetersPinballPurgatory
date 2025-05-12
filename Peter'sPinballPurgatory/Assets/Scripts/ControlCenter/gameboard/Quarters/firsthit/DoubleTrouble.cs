@@ -19,7 +19,7 @@ public class DoubleTrouble : QuarterAbstract
 
     public override void checkTrigger()
     {
-        if (doOnce && stats.getBumps() == 1)
+        if (doOnce && stats.getBumps() == 1 && !stats.isDead())
         {
             doOnce = false;
             Debug.Log("Check trigger doubletrouble");
