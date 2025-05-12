@@ -92,7 +92,7 @@ public class RoundManager : MonoBehaviour
 
         canCheckRoundOver = false;
 
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(0.5f);
 
         if (!quartersActive && playerdead && !GameObject.FindWithTag("Player") && !GameObject.FindWithTag("FakePlayer"))
         {
