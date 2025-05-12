@@ -24,7 +24,7 @@ public class flipwalloff : MonoBehaviour
 
     public bool getwallPassed()
     {
-        return wallOn = launchwall.activeInHierarchy;
+        return wallOn = launchwall.activeSelf;
     }
 
     public void resetwall()

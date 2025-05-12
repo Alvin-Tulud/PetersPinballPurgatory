@@ -19,7 +19,7 @@ public class Mitosis : QuarterAbstract
 
     public override void checkTrigger()
     {
-        if (stats.getHasLaunched() && !stats.isDead() && stats.getTime() % 3 == 0 && stats.getTime() > 2f && FindAnyObjectByType<flipwalloff>().getwallPassed())
+        if (stats.getTime() % 3 == 0 && stats.getTime() > 2f && FindAnyObjectByType<flipwalloff>().getwallPassed())
         {
             Debug.Log("Check trigger Mitosis");
 
