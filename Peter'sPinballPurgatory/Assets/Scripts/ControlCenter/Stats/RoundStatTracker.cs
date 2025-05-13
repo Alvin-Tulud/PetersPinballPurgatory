@@ -34,6 +34,7 @@ public class RoundStatTracker : MonoBehaviour
         }
 
         setStartTime();
+        finddeathCount();
     }
 
     public void resetStats()
@@ -108,6 +109,10 @@ public class RoundStatTracker : MonoBehaviour
     public void setDead()
     {
         died = true;
+    }
+
+    public void finddeathCount()
+    {
         deathCount = FindAnyObjectByType<killPlayer>().getDeathCount();
     }
 
