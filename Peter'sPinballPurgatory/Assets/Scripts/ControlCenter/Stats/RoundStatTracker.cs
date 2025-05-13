@@ -75,9 +75,7 @@ public class RoundStatTracker : MonoBehaviour
     {
         if (canResetTime && FindAnyObjectByType<flipwalloff>().getwallPassed())
         {
-            seconds = Time.unscaledTime;
-
-            seconds = (float)Math.Round(seconds, 2, MidpointRounding.AwayFromZero);
+            seconds = float.Parse(Time.unscaledTime.ToString("F2"));
 
             canResetTime = false;
         }
@@ -100,7 +98,11 @@ public class RoundStatTracker : MonoBehaviour
 
     public float getTime()
     {
-        return (float)Math.Round(Time.unscaledTime, 2, MidpointRounding.AwayFromZero) - seconds;
+        float currentSeconds = float.Parse(Time.unscaledTime.ToString("F2"));
+
+        //Debug.Log(currentSeconds + " - " + seconds);
+
+        return currentSeconds - seconds;
     }
 
     public void setDead()

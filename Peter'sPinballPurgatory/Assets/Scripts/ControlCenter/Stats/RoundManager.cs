@@ -220,7 +220,7 @@ public class RoundManager : MonoBehaviour
     {
         if (FindAnyObjectByType<flipwalloff>().getwallPassed() && !GetComponent<RoundStatTracker>().isDead())
         {
-            timeText.text = "Time:\n" + GetComponent<RoundStatTracker>().getTime().ToString("N");
+            timeText.text = "Time:\n" + GetComponent<RoundStatTracker>().getTime().ToString("F2");
         }
         else
         {
