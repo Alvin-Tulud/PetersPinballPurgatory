@@ -5,6 +5,7 @@ using System.Numerics;
 public class BumperStats : MonoBehaviour
 {
     public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI effectText;
     public BigInteger scoreValue;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -25,6 +26,8 @@ public class BumperStats : MonoBehaviour
     {
         if (effect == effect.Halve)
         {
+            effectText.text = "1/2";
+
             if (scoreValue == 0 || scoreValue == 1)
             {
                 scoreValue = 1;
@@ -36,10 +39,14 @@ public class BumperStats : MonoBehaviour
         }
         else if (effect == effect.Double)
         {
+            effectText.text = "x2";
+
             scoreValue = scoreValue * 2;
         }
 
         scoreText.text = scoreValue.ToString();
+
+        GetComponent<Animator>().SetTrigger("Effect");
     }
 
     public BigInteger getScore()

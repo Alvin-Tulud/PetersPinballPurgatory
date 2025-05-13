@@ -27,7 +27,7 @@ public class DoubleTrouble : QuarterAbstract
             doEffect();
         }
 
-        if (stats.isRoundOver())
+        if (stats.isRoundOver() || stats.isDead() && stats.getBumps() == 0)
         {
             doOnce = true;
         }

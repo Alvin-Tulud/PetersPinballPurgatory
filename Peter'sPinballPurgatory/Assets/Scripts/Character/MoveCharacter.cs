@@ -132,6 +132,8 @@ public class MoveCharacter : MonoBehaviour
     {
         if (canLaunch)
         {
+            //GetComponent<AudioSource>().Play();
+
             rb.AddForce(110f, 0f, 0f, ForceMode.Impulse);
 
             canLaunch = false;
