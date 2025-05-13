@@ -1,7 +1,6 @@
-using System.Collections;
 using UnityEngine;
 
-public class GumGum : QuarterAbstract
+public class Bumpasaurus : QuarterAbstract
 {
     private RoundStatTracker stats;
 
@@ -25,7 +24,10 @@ public class GumGum : QuarterAbstract
         {
             bumps++;
 
-            doEffect();
+            if (bumps % 10 == 0 && bumps > 1)
+            {
+                doEffect();
+            }
         }
 
         if (stats.isRoundOver() || stats.getBumps() == 0)
@@ -36,14 +38,18 @@ public class GumGum : QuarterAbstract
 
     public override void doEffect()
     {
-        GetComponent<AudioSource>().Play();
-
         Debug.Log("do effect gum gum: " + bumps);
 
         GetComponent<CheckActive>().setActive();
-        
-        ScoreTracker score = FindAnyObjectByType<ScoreTracker>();
 
-        score.AddScore(bumps);
+        BumperStats[] bstats = FindObjectsByType<BumperStats>(FindObjectsSortMode.None);
+
+        for (int i = 0; i < bstats.Length; i++)
+        {
+            if (bstats[i].scoreValue < 30)
+            {
+                bstats[i].updateScore(effect.Double);
+            }
+        }
     }
 }
