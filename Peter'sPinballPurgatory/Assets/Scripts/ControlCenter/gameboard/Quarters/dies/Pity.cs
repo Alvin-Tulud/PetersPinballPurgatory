@@ -19,7 +19,7 @@ public class Pity : QuarterAbstract
 
     public override void checkTrigger()
     {
-        if (stats.isDead() && deathCount < stats.getDeathCount() && !stats.isRoundOver())
+        if (deathCount < stats.getDeathCount() && !stats.isRoundOver())
         {
             Debug.Log("Check trigger pity");
 

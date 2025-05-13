@@ -20,6 +20,8 @@ public class ShopSetter : MonoBehaviour
 
     public void exitShop(GameObject selected)
     {
+        Shop.GetComponent<AudioSource>().Play();
+
         ShopAnim.SetTrigger("ShopState");
         //close shop and delete the other 2 objects not selected
         ItemsForSale.Remove(selected);
