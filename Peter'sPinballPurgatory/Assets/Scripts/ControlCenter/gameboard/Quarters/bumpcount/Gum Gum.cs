@@ -36,6 +36,8 @@ public class GumGum : QuarterAbstract
 
     public override void doEffect()
     {
+        GetComponent<AudioSource>().Play();
+
         Debug.Log("do effect gum gum: " + bumps);
 
         GetComponent<CheckActive>().setActive();
