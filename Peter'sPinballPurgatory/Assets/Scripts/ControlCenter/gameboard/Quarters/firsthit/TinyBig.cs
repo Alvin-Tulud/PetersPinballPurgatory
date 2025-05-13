@@ -28,7 +28,7 @@ public class TinyBig : QuarterAbstract
             doEffect();
         }
 
-        if (stats.isRoundOver() || stats.getBumps() == 0 && stats.isDead())
+        if (stats.isRoundOver() || stats.getBumps() == 0)
         {
             doOnce = true;
         }
