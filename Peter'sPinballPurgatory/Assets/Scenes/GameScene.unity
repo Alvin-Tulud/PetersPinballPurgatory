@@ -24023,7 +24023,7 @@ AudioSource:
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 100
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -73447,7 +73447,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1782736327513837062, guid: 0830cdcd516d6e5429109de519830c33, type: 3}
       propertyPath: m_Volume
-      value: 0.3
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4703723272443054654, guid: 0830cdcd516d6e5429109de519830c33, type: 3}
       propertyPath: m_LocalPosition.x
