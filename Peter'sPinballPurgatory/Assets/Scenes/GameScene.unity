@@ -67047,6 +67047,7 @@ MonoBehaviour:
   killBoxes:
   - {fileID: 551176697}
   maxlives: 5
+  GameOverPanel: {fileID: 0}
   livesText: {fileID: 1113147773}
   timeText: {fileID: 1778612444}
 --- !u!114 &1963815389

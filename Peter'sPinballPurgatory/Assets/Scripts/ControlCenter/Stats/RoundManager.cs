@@ -25,11 +25,14 @@ public class RoundManager : MonoBehaviour
     public int maxlives;
     private int currentlives;
 
+    public GameObject GameOverPanel;
+
     public TextMeshProUGUI livesText;
 
     private bool canCheckRoundOver;
 
     public TextMeshProUGUI timeText;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -122,7 +125,8 @@ public class RoundManager : MonoBehaviour
 
             if (currentlives <= 0)
             {
-                SceneManager.LoadScene(0);
+                SceneManager.LoadScene(3);
+                yield break;
             }
         }
 
@@ -195,7 +199,6 @@ public class RoundManager : MonoBehaviour
             setScore(Math.Pow((double)(maxScore) / 4, (roundNum * 0.2)) + ((double)(maxScore) / 2) * (1 + (roundNum * 0.4)));
         }
 
-
         bumperScores = bumperScores.OrderBy(x => UnityEngine.Random.value).ToList();
 
         GetComponent<BumperSetter>().setBumpers(bumperScores);
@@ -227,7 +230,6 @@ public class RoundManager : MonoBehaviour
         {
             timeText.text = "Time:\n0.00";
         }
-        
     }
 
     public int getRound()
