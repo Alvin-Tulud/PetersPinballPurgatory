@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -191,16 +192,16 @@ public class RoundManager : MonoBehaviour
         }
         else
         {
-            setScore(Mathf.FloorToInt(Mathf.Pow(((float)maxScore) / 4, (roundNum * 0.2f)) + (((float)maxScore) / 2) * (1 + (roundNum * 0.4f))));
+            setScore(Math.Pow((double)(maxScore) / 4, (roundNum * 0.2)) + ((double)(maxScore) / 2) * (1 + (roundNum * 0.4)));
         }
 
 
-        bumperScores = bumperScores.OrderBy(x => Random.value).ToList();
+        bumperScores = bumperScores.OrderBy(x => UnityEngine.Random.value).ToList();
 
         GetComponent<BumperSetter>().setBumpers(bumperScores);
     }
 
-    public void setScore(int score)
+    public void setScore(double score)
     {
         GetComponent<ScoreTracker>().SetMaxScore(score);
         GetComponent<ScoreTracker>().resetScore();

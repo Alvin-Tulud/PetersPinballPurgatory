@@ -25,9 +25,9 @@ public class ScoreTracker : MonoBehaviour
         setText();
     }
 
-    public void SetMaxScore(BigInteger max)
+    public void SetMaxScore(double max)
     {
-        scoreMax = max;
+        scoreMax = new BigInteger(max);
     }
 
     public bool checkPass()
@@ -37,7 +37,7 @@ public class ScoreTracker : MonoBehaviour
 
     public void setText()
     {
-        scoreText.text = "Score:\n" + score + "/" + scoreMax;
+        scoreText.text = "Score:\n" + intchain.FormatLargeNumber((double)score) + "/" + intchain.FormatLargeNumber((double)scoreMax);
     }
 
     public BigInteger getScore()

@@ -34,7 +34,7 @@ public class BumperStats : MonoBehaviour
             }
             else
             {
-                scoreValue = Mathf.FloorToInt(((float)scoreValue) / 2);
+                scoreValue = BigInteger.Divide(scoreValue, 2);
             }
         }
         else if (effect == effect.Double)
@@ -44,7 +44,7 @@ public class BumperStats : MonoBehaviour
             scoreValue = scoreValue * 2;
         }
 
-        scoreText.text = scoreValue.ToString();
+        scoreText.text = intchain.FormatLargeNumber((double)scoreValue);
 
         GetComponent<Animator>().SetTrigger("Effect");
     }

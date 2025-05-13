@@ -5,10 +5,12 @@ using static QuarterAbstract;
 public class OverUnder : QuarterAbstract
 {
     private RoundStatTracker stats;
+    private int checkedTime;
 
     private void Awake()
     {
         stats = FindAnyObjectByType<RoundStatTracker>();
+        checkedTime = 0;
     }
 
     private void Update()
@@ -18,11 +20,21 @@ public class OverUnder : QuarterAbstract
 
     public override void checkTrigger()
     {
-        if (stats.getHasLaunched() && !stats.isDead() && stats.getTime() % 1 == 0 && stats.getTime() > 0.1f && FindAnyObjectByType<flipwalloff>().getwallPassed())
+        int timecheck = Mathf.FloorToInt(stats.getTime());
+
+        //Debug.Log(timecheck);
+        if (timecheck != checkedTime && timecheck % 1 == 0 && stats.getTime() > 0.5f && FindAnyObjectByType<flipwalloff>().getwallPassed())
         {
             Debug.Log("Check trigger overunder");
 
+            checkedTime = timecheck;
+
             doEffect();
+        }
+
+        if (!FindAnyObjectByType<flipwalloff>().getwallPassed())
+        {
+            checkedTime = 0;
         }
     }
 
@@ -32,14 +44,18 @@ public class OverUnder : QuarterAbstract
 
         GetComponent<CheckActive>().setActive();
 
-        BumperStats[] bstats = FindObjectsByType<BumperStats>(FindObjectsSortMode.None);
+        if (GameObject.FindWithTag("Player") || GameObject.FindWithTag("FakePlayer"))
+        {
+            BumperStats[] bstats = FindObjectsByType<BumperStats>(FindObjectsSortMode.None);
 
-        int randBumper = Random.Range(0, bstats.Length);
+            int randBumper = Random.Range(0, bstats.Length);
 
-        bstats[randBumper].updateScore(effect.Double);
+            bstats[randBumper].updateScore(effect.Double);
 
-        randBumper = Random.Range(0, bstats.Length);
+            randBumper = Random.Range(0, bstats.Length);
 
-        bstats[randBumper].updateScore(effect.Halve);
+            bstats[randBumper].updateScore(effect.Halve);
+        }
+        
     }
 }

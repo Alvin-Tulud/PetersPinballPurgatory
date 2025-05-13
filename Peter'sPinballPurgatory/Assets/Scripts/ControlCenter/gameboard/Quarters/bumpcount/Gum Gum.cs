@@ -21,7 +21,7 @@ public class GumGum : QuarterAbstract
 
     public override void checkTrigger()
     {
-        if (stats.getHasLaunched() && bumps < stats.getBumps() && !stats.isDead())
+        if (stats.getHasLaunched() && bumps < stats.getBumps())
         {
             bumps++;
 

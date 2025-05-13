@@ -65,7 +65,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '- When Peter Dies
+  m_text: '- When A Peter Dies
 
     - Multiply Points by 1.5x'
   m_isRightToLeft: 0
