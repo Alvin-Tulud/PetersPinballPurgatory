@@ -67,7 +67,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: '- When A Peter Dies
 
-    - Get 20 points, Get 200 if on Round 15 or Higher'
+    - Get 20 points, Get 500 if on Round 15 or Higher'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
