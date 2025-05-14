@@ -24,12 +24,12 @@ public class OverUnder : QuarterAbstract
 
     public override void checkTrigger()
     {
-        // ❌ Don’t run if this item hasn’t been activated
-        if (!GetComponent<CheckActive>().getActive()) return;
-
         int timecheck = Mathf.FloorToInt(stats.getTime());
 
-        if (timecheck != checkedTime && timecheck % 1 == 0 && stats.getTime() > 0.5f && FindAnyObjectByType<flipwalloff>().getwallPassed())
+        if (timecheck != checkedTime &&
+            timecheck % 1 == 0 &&
+            stats.getTime() > 0.5f &&
+            FindAnyObjectByType<flipwalloff>().getwallPassed())
         {
             Debug.Log("Check trigger overunder");
 
@@ -46,17 +46,16 @@ public class OverUnder : QuarterAbstract
 
     public override void doEffect()
     {
-        if (sfx != null)
-        {
-            sfx.Play();
-        }
-
         Debug.Log("Check effect overunder");
 
-        BumperStats[] bstats = FindObjectsByType<BumperStats>(FindObjectsSortMode.None);
+        GetComponent<CheckActive>().setActive();
+
+        if (sfx != null) sfx.Play(); // ✅ Sound only plays here
 
         if (GameObject.FindWithTag("Player") || GameObject.FindWithTag("FakePlayer"))
         {
+            BumperStats[] bstats = FindObjectsByType<BumperStats>(FindObjectsSortMode.None);
+
             int randBumper = Random.Range(0, bstats.Length);
             bstats[randBumper].updateScore(effect.Double);
 

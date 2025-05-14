@@ -25,12 +25,13 @@ public class Mitosis : QuarterAbstract
 
     public override void checkTrigger()
     {
-        // ✅ Only run if item is active
-        if (!GetComponent<CheckActive>().getActive()) return;
-
         int timecheck = Mathf.FloorToInt(stats.getTime());
 
-        if (timecheck != checkedTime && timecheck % 3 == 0 && stats.getTime() > 2f && FindAnyObjectByType<flipwalloff>().getwallPassed())
+        // ✅ This is your original working logic — unchanged
+        if (timecheck != checkedTime &&
+            timecheck % 3 == 0 &&
+            stats.getTime() > 2f &&
+            FindAnyObjectByType<flipwalloff>().getwallPassed())
         {
             Debug.Log("Check trigger Mitosis");
 
@@ -47,24 +48,23 @@ public class Mitosis : QuarterAbstract
 
     public override void doEffect()
     {
-        // ✅ Only play SFX when active
-        if (sfx != null)
-        {
-            sfx.Play();
-        }
-
         Debug.Log("Check effect Mitosis");
 
+        // ✅ We still call setActive (your original)
         GetComponent<CheckActive>().setActive();
+
+        // ✅ Now we just add the sound when the effect actually fires
+        if (sfx != null) sfx.Play();
 
         if (GameObject.FindWithTag("Player"))
         {
+            Debug.Log("found");
+
             GameObject player = GameObject.FindWithTag("Player");
 
-            if (fakePeter != null)
-            {
-                Instantiate(fakePeter, player.transform.position, player.transform.rotation);
-            }
+            Debug.Log(fakePeter != null);
+
+            Instantiate(fakePeter, player.transform.position, player.transform.rotation);
         }
     }
 }
