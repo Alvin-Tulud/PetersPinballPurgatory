@@ -130,7 +130,7 @@ public class MoveCharacter : MonoBehaviour
 
     public void getLaunchVector(InputAction.CallbackContext context)
     {
-        if (canLaunch)
+        if (canLaunch && canMove)
         {
             GetComponent<AudioSource>().Play();
 

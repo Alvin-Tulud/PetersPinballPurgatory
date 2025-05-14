@@ -109,7 +109,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01fc5ee3a86017840a23458f95f743a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rarity: 70
+  rarity: 10
 --- !u!114 &-3264881877173000102
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -147,7 +147,7 @@ AudioSource:
   m_audioClip: {fileID: 8300000, guid: 4d7b5a9854b869b41a17ca0b2cf6c5cb, type: 3}
   m_Resource: {fileID: 8300000, guid: 4d7b5a9854b869b41a17ca0b2cf6c5cb, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.2
+  m_Volume: 0.1
   m_Pitch: 1
   Loop: 0
   Mute: 0
