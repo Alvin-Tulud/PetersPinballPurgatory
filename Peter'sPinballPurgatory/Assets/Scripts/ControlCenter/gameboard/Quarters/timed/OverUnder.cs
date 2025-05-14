@@ -34,7 +34,6 @@ public class OverUnder : QuarterAbstract
             Debug.Log("Check trigger overunder");
 
             checkedTime = timecheck;
-
             doEffect();
         }
 
@@ -50,7 +49,11 @@ public class OverUnder : QuarterAbstract
 
         GetComponent<CheckActive>().setActive();
 
-        if (sfx != null) sfx.Play(); // ✅ Sound only plays here
+        // ✅ Only play sound when item is actually active
+        if (GetComponent<CheckActive>().getActive() && sfx != null)
+        {
+            sfx.Play();
+        }
 
         if (GameObject.FindWithTag("Player") || GameObject.FindWithTag("FakePlayer"))
         {

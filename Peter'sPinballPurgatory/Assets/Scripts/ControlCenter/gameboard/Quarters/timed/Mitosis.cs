@@ -14,7 +14,6 @@ public class Mitosis : QuarterAbstract
     {
         stats = FindAnyObjectByType<RoundStatTracker>();
         checkedTime = 0;
-
         sfx = GetComponent<AudioSource>();
     }
 
@@ -27,7 +26,6 @@ public class Mitosis : QuarterAbstract
     {
         int timecheck = Mathf.FloorToInt(stats.getTime());
 
-        // ✅ This is your original working logic — unchanged
         if (timecheck != checkedTime &&
             timecheck % 3 == 0 &&
             stats.getTime() > 2f &&
@@ -36,7 +34,6 @@ public class Mitosis : QuarterAbstract
             Debug.Log("Check trigger Mitosis");
 
             checkedTime = timecheck;
-
             doEffect();
         }
 
@@ -50,21 +47,22 @@ public class Mitosis : QuarterAbstract
     {
         Debug.Log("Check effect Mitosis");
 
-        // ✅ We still call setActive (your original)
         GetComponent<CheckActive>().setActive();
 
-        // ✅ Now we just add the sound when the effect actually fires
-        if (sfx != null) sfx.Play();
+        // ✅ Only play sound when item is actually active
+        if (GetComponent<CheckActive>().getActive() && sfx != null)
+        {
+            sfx.Play();
+        }
 
         if (GameObject.FindWithTag("Player"))
         {
-            Debug.Log("found");
-
             GameObject player = GameObject.FindWithTag("Player");
 
-            Debug.Log(fakePeter != null);
-
-            Instantiate(fakePeter, player.transform.position, player.transform.rotation);
+            if (fakePeter != null)
+            {
+                Instantiate(fakePeter, player.transform.position, player.transform.rotation);
+            }
         }
     }
 }
