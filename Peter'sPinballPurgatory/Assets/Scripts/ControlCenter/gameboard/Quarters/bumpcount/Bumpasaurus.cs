@@ -7,6 +7,8 @@ public class Bumpasaurus : QuarterAbstract
 
     private AudioSource sfx;
 
+    public GameObject effectModelPrefab;
+
     private void Awake()
     {
         stats = FindAnyObjectByType<RoundStatTracker>();
@@ -46,6 +48,12 @@ public class Bumpasaurus : QuarterAbstract
         if (sfx != null)
         {
             sfx.Play();
+        }
+        
+        if (effectModelPrefab != null)
+        {
+            GameObject instance = Instantiate(effectModelPrefab, transform.position, Quaternion.identity);
+            Destroy(instance, sfx.clip.length); 
         }
 
         GetComponent<CheckActive>().setActive();
