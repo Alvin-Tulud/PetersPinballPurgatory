@@ -20,6 +20,8 @@ public class RoundStatTracker : MonoBehaviour
 
     public Button jumbleButton;
 
+    private BigInteger totalScore = 0;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -52,6 +54,17 @@ public class RoundStatTracker : MonoBehaviour
         hasJumbled = false;
 
         jumbleButton.interactable = true;
+    }
+
+    public BigInteger getTotalScore()
+    {
+        return totalScore;
+    }
+
+    public void addTotalScore()
+    {
+        totalScore += GetComponent<ScoreTracker>().getScore();
+
     }
 
     public void setHighestBumper()
