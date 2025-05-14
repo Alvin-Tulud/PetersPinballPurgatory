@@ -65,7 +65,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Bumpasaurus Rex
+  m_text: Bumpasaurus Rex (+++)
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -278,10 +278,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '- Every 10 Bumpers Hit
-
-    - Double all Bumpers with a Score Less Than
-    30'
+  m_text: "- Every 10 Bumpers Hit \n- Double all Bumpers with a Score Less Than 100"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -522,6 +519,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f13ad0dcb30a7ac40b973eed442eb968, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  effectModelPrefab: {fileID: 0}
 --- !u!82 &3902806896334917642
 AudioSource:
   m_ObjectHideFlags: 0

@@ -101,7 +101,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Tiny Big
+  m_text: 'Tiny Big (+)
 
 '
   m_isRightToLeft: 0

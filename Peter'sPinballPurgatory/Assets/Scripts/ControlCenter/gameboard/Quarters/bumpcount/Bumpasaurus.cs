@@ -62,7 +62,7 @@ public class Bumpasaurus : QuarterAbstract
 
         for (int i = 0; i < bstats.Length; i++)
         {
-            if (bstats[i].scoreValue < 30)
+            if (bstats[i].scoreValue < 100)
             {
                 bstats[i].updateScore(effect.Double);
             }

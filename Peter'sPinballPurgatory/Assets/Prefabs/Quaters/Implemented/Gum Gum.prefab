@@ -142,7 +142,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Gum Gum
+  m_text: 'Gum Gum (+)
 
 '
   m_isRightToLeft: 0
