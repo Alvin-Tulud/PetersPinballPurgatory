@@ -29,7 +29,8 @@ public class Mitosis : QuarterAbstract
         if (timecheck != checkedTime &&
             timecheck % 3 == 0 &&
             stats.getTime() > 2f &&
-            FindAnyObjectByType<flipwalloff>().getwallPassed())
+            FindAnyObjectByType<flipwalloff>().getwallPassed() &&
+            GameObject.FindWithTag("Player"))
         {
             Debug.Log("Check trigger Mitosis");
 
@@ -49,17 +50,14 @@ public class Mitosis : QuarterAbstract
 
         GetComponent<CheckActive>().setActive();
 
-        if (GameObject.FindWithTag("Player"))
+        // ✅ Only play sound when item is actually active
+        if (GetComponent<CheckActive>().getActive() && sfx != null)
         {
-            // ✅ Only play sound when item is actually active
-            if (GetComponent<CheckActive>().getActive() && sfx != null)
-            {
-                sfx.Play();
-            }
-
-            GameObject player = GameObject.FindWithTag("Player");
-
-            Instantiate(fakePeter, player.transform.position, player.transform.rotation);
+            sfx.Play();
         }
+
+        GameObject player = GameObject.FindWithTag("Player");
+
+        Instantiate(fakePeter, player.transform.position, player.transform.rotation);
     }
 }

@@ -6,10 +6,14 @@ public class CheckActive : MonoBehaviour
     private bool isActive;
     private bool setOff;
 
+    private Light activeLight;
+
     private void Awake()
     {
         isActive = false;
         setOff = false;
+
+        activeLight = GetComponent<Light>();
     }
 
     private void Update()
@@ -22,11 +26,15 @@ public class CheckActive : MonoBehaviour
 
     private IEnumerator turnOff()
     {
+        activeLight.enabled = true;
+
         setOff = false;
 
         yield return new WaitForSeconds(0.5f);
 
         isActive = false;
+
+        activeLight.enabled = false;
     }
 
     public void setActive()

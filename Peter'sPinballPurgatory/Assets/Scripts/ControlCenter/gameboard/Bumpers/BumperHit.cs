@@ -1,3 +1,4 @@
+using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -13,10 +14,13 @@ public class BumperHit : MonoBehaviour
 
     AudioSource bsource;
 
+    Light blight;
+
     private void Start()
     {
         bstats = GetComponent<BumperStats>();
         bsource = GetComponent<AudioSource>();
+        blight = GetComponent<Light>();
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -30,9 +34,19 @@ public class BumperHit : MonoBehaviour
             float pitch = Random.Range(pitchmin, pitchmax);
             bsource.pitch = pitch;
             bsource.Play();
+            StartCoroutine(lightcooldown());
 
             FindAnyObjectByType<ScoreTracker>().AddScore(bstats.getScore());
             FindAnyObjectByType<RoundStatTracker>().AddBump();
         }
+    }
+
+    IEnumerator lightcooldown()
+    {
+        blight.enabled = true;
+
+        yield return new WaitForSeconds(0.25f);
+
+        blight.enabled = false;
     }
 }

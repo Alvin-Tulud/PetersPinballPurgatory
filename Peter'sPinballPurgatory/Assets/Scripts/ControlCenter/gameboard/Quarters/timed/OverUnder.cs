@@ -29,7 +29,8 @@ public class OverUnder : QuarterAbstract
         if (timecheck != checkedTime &&
             timecheck % 1 == 0 &&
             stats.getTime() > 0.5f &&
-            FindAnyObjectByType<flipwalloff>().getwallPassed())
+            FindAnyObjectByType<flipwalloff>().getwallPassed() &&
+            (GameObject.FindWithTag("Player") || GameObject.FindWithTag("FakePlayer")))
         {
             Debug.Log("Check trigger overunder");
 
@@ -49,21 +50,18 @@ public class OverUnder : QuarterAbstract
 
         GetComponent<CheckActive>().setActive();
 
-        if (GameObject.FindWithTag("Player") || GameObject.FindWithTag("FakePlayer"))
+        // ✅ Only play sound when item is actually active
+        if (GetComponent<CheckActive>().getActive() && sfx != null)
         {
-            // ✅ Only play sound when item is actually active
-            if (GetComponent<CheckActive>().getActive() && sfx != null)
-            {
-                sfx.Play();
-            }
-
-            BumperStats[] bstats = FindObjectsByType<BumperStats>(FindObjectsSortMode.None);
-
-            int randBumper = Random.Range(0, bstats.Length);
-            bstats[randBumper].updateScore(effect.Double);
-
-            randBumper = Random.Range(0, bstats.Length);
-            bstats[randBumper].updateScore(effect.Halve);
+            sfx.Play();
         }
+
+        BumperStats[] bstats = FindObjectsByType<BumperStats>(FindObjectsSortMode.None);
+
+        int randBumper = Random.Range(0, bstats.Length);
+        bstats[randBumper].updateScore(effect.Double);
+
+        randBumper = Random.Range(0, bstats.Length);
+        bstats[randBumper].updateScore(effect.Halve);
     }
 }
