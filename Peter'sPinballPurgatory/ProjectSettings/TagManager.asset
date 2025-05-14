@@ -10,6 +10,7 @@ TagManager:
   - BumperSpot
   - FakePlayer
   - MiddleBumper
+  - Flipper
   layers:
   - Default
   - TransparentFX

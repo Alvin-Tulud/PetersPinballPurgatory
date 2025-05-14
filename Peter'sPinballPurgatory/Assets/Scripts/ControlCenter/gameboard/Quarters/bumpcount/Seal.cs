@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Bumpasaurus : QuarterAbstract
+public class Seal : QuarterAbstract
 {
     private RoundStatTracker stats;
     private int bumps;
@@ -26,8 +26,10 @@ public class Bumpasaurus : QuarterAbstract
         {
             bumps++;
 
-            if (bumps % 10 == 0 && bumps > 1)
+            if (bumps % 5 == 0 && bumps > 1)
             {
+                Debug.Log("do trigger seal: " + bumps);
+
                 doEffect();
             }
         }
@@ -40,7 +42,7 @@ public class Bumpasaurus : QuarterAbstract
 
     public override void doEffect()
     {
-        Debug.Log("do effect bumpasaurus: " + bumps);
+        Debug.Log("do effect seal: " + bumps);
 
         // Play SFX if available
         if (sfx != null)
@@ -50,14 +52,10 @@ public class Bumpasaurus : QuarterAbstract
 
         GetComponent<CheckActive>().setActive();
 
-        BumperStats[] bstats = FindObjectsByType<BumperStats>(FindObjectsSortMode.None);
+        swivelpaddle[] paddle = FindObjectsByType<swivelpaddle>(FindObjectsSortMode.None);
 
-        for (int i = 0; i < bstats.Length; i++)
-        {
-            if (bstats[i].scoreValue < 30)
-            {
-                bstats[i].updateScore(effect.Double);
-            }
-        }
+        int rand = Random.Range(0, 2);
+
+        paddle[rand].setStartSwing(true);
     }
 }

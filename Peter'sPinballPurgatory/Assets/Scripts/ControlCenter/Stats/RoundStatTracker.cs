@@ -88,6 +88,8 @@ public class RoundStatTracker : MonoBehaviour
         {
             firsthit = true;
 
+            setHighestBumper();
+
             if (GetComponent<ScoreTracker>().getScore() == highestbumper)
             {
                 firsthithighest = true;
@@ -95,6 +97,11 @@ public class RoundStatTracker : MonoBehaviour
         }
 
         bumps++;
+    }
+
+    public bool getfirsthighesthit()
+    {
+        return firsthithighest;
     }
 
     public float getTime()

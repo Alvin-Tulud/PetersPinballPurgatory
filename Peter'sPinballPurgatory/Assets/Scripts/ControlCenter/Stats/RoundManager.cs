@@ -120,13 +120,13 @@ public class RoundManager : MonoBehaviour
             }
             else
             {
-                resetBoardState();
-            }
+                if (currentlives <= 0)
+                {
+                    SceneManager.LoadScene(3);
+                    yield break;
+                }
 
-            if (currentlives <= 0)
-            {
-                SceneManager.LoadScene(3);
-                yield break;
+                resetBoardState();
             }
         }
 

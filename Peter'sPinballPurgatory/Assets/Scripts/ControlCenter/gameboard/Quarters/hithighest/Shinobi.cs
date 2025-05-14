@@ -1,18 +1,22 @@
+using System.Numerics;
 using UnityEngine;
 
-public class Bumpasaurus : QuarterAbstract
+public class Shinobi : QuarterAbstract
 {
     private RoundStatTracker stats;
+    private ScoreTracker score;
+    private bool doOnce;
     private int bumps;
-
     private AudioSource sfx;
 
     private void Awake()
     {
         stats = FindAnyObjectByType<RoundStatTracker>();
-        sfx = GetComponent<AudioSource>();
-
+        score = FindAnyObjectByType<ScoreTracker>();
+        doOnce = true;
         bumps = 0;
+
+        sfx = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -22,12 +26,17 @@ public class Bumpasaurus : QuarterAbstract
 
     public override void checkTrigger()
     {
-        if (stats.getHasLaunched() && bumps < stats.getBumps())
+        if (stats.getBumps() > bumps && 
+            stats.getBumps() < 2 &&
+            !stats.isDead() && 
+            stats.getfirsthighesthit())
         {
             bumps++;
 
-            if (bumps % 10 == 0 && bumps > 1)
+            if (bumps % 1 == 0 && bumps > 0)
             {
+                Debug.Log("Check trigger shinobi");
+
                 doEffect();
             }
         }
@@ -37,10 +46,9 @@ public class Bumpasaurus : QuarterAbstract
             bumps = 0;
         }
     }
-
     public override void doEffect()
     {
-        Debug.Log("do effect bumpasaurus: " + bumps);
+        Debug.Log("do effect shinobi");
 
         // Play SFX if available
         if (sfx != null)
@@ -54,10 +62,7 @@ public class Bumpasaurus : QuarterAbstract
 
         for (int i = 0; i < bstats.Length; i++)
         {
-            if (bstats[i].scoreValue < 30)
-            {
-                bstats[i].updateScore(effect.Double);
-            }
+            bstats[i].updateScore(effect.Double);
         }
     }
 }

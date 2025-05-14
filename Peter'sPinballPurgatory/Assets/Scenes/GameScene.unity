@@ -67531,6 +67531,8 @@ MonoBehaviour:
   - {fileID: 2406280309503905269, guid: 729757123e3eea44b95a582a8b0ff0df, type: 3}
   - {fileID: 5378320913692586602, guid: 5452535dceea0f64ea007efc1d0f86ba, type: 3}
   - {fileID: 7310316280854745511, guid: 3e15ee1cc6e56a242b1a199f0641d159, type: 3}
+  - {fileID: 8079129703846149475, guid: 3a4bb98cf8d51ac4da1cf763f1d79c33, type: 3}
+  - {fileID: 2993889929118710167, guid: f32d54152df7c754a81bedc11e738f8c, type: 3}
   Shop: {fileID: 162027105}
   ShopSlot: {fileID: 751318742}
 --- !u!114 &1963815391
@@ -73891,6 +73893,10 @@ PrefabInstance:
       propertyPath: m_Volume
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 4100396501555943065, guid: 0830cdcd516d6e5429109de519830c33, type: 3}
+      propertyPath: m_TagString
+      value: Flipper
+      objectReference: {fileID: 0}
     - target: {fileID: 4703723272443054654, guid: 0830cdcd516d6e5429109de519830c33, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0
@@ -73934,6 +73940,10 @@ PrefabInstance:
     - target: {fileID: 5335969278158213252, guid: 0830cdcd516d6e5429109de519830c33, type: 3}
       propertyPath: m_Name
       value: pinball
+      objectReference: {fileID: 0}
+    - target: {fileID: 8584505279048456272, guid: 0830cdcd516d6e5429109de519830c33, type: 3}
+      propertyPath: m_TagString
+      value: Flipper
       objectReference: {fileID: 0}
     - target: {fileID: 8870441233854982823, guid: 0830cdcd516d6e5429109de519830c33, type: 3}
       propertyPath: m_TagString
