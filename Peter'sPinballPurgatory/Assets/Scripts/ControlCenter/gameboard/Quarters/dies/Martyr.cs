@@ -51,7 +51,7 @@ public class Martyr : QuarterAbstract
 
         ScoreTracker score = FindAnyObjectByType<ScoreTracker>();
 
-        if (stats.getRound() + 1 <= 15)
+        if (stats.getRound() + 1 < 15)
         {
             score.AddScore(20);
         }

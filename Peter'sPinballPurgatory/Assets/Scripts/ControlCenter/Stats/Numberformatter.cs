@@ -30,7 +30,7 @@ public struct intchain
 
     public static string FormatLargeNumber(double number)
     {
-        string format = number.ToString("F1");
+        string format = number.ToString("F0");
 
         if (number < 1000)
         {
