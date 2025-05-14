@@ -96,7 +96,7 @@ public class RoundManager : MonoBehaviour
 
         canCheckRoundOver = false;
 
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.25f);
 
         if (!quartersActive && playerdead && !GameObject.FindWithTag("Player") && !GameObject.FindWithTag("FakePlayer"))
         {
@@ -107,6 +107,8 @@ public class RoundManager : MonoBehaviour
                 player.setState();
             }
 
+            GetComponent<RoundStatTracker>().addTotalScore();
+
             GetComponent<RoundStatTracker>().setRoundOver();
 
             currentlives--;
@@ -115,6 +117,11 @@ public class RoundManager : MonoBehaviour
 
             if (GetComponent<ScoreTracker>().checkPass())
             {
+                if (roundNum + 1 == 5)
+                {
+                    GetComponent<gameoverPanel>().setWinState(winState.win, GetComponent<RoundStatTracker>().getTotalScore());
+                }
+
                 Debug.Log("round increase");
                 increaseRound();
             }
@@ -122,7 +129,7 @@ public class RoundManager : MonoBehaviour
             {
                 if (currentlives <= 0)
                 {
-                    SceneManager.LoadScene(3);
+                    GetComponent<gameoverPanel>().setWinState(winState.lose, GetComponent<RoundStatTracker>().getTotalScore());
                     yield break;
                 }
 
