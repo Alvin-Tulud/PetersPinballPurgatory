@@ -117,7 +117,7 @@ public class RoundManager : MonoBehaviour
 
             if (GetComponent<ScoreTracker>().checkPass())
             {
-                if (roundNum + 1 == 5)
+                if (roundNum + 1 == 30)
                 {
                     GetComponent<gameoverPanel>().setWinState(winState.win, GetComponent<RoundStatTracker>().getTotalScore());
                 }
