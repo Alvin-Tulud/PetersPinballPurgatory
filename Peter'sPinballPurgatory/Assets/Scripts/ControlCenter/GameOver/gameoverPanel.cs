@@ -27,7 +27,7 @@ public class gameoverPanel : MonoBehaviour
         {
             panel.GetComponent<Animator>().SetTrigger("Lose");
 
-            winstatetext.text = "Why'd You Lose?";
+            winstatetext.text = "How You Lose?";
             continueButton.interactable = false;
         }
     }

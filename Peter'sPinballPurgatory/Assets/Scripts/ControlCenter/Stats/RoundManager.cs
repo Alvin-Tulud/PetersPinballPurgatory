@@ -100,7 +100,7 @@ public class RoundManager : MonoBehaviour
 
         if (!quartersActive && playerdead && !GameObject.FindWithTag("Player") && !GameObject.FindWithTag("FakePlayer"))
         {
-            Debug.Log("round over");
+            //Debug.Log("round over");
 
             foreach (killPlayer player in killBoxes)
             {
@@ -122,7 +122,7 @@ public class RoundManager : MonoBehaviour
                     GetComponent<gameoverPanel>().setWinState(winState.win, GetComponent<RoundStatTracker>().getTotalScore());
                 }
 
-                Debug.Log("round increase");
+                //Debug.Log("round increase");
                 increaseRound();
             }
             else
