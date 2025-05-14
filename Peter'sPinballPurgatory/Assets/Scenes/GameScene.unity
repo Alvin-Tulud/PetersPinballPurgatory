@@ -75300,6 +75300,63 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4688541147948665912, guid: 0830cdcd516d6e5429109de519830c33, type: 3}
   m_PrefabInstance: {fileID: 4624134115382550614}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &7240534023013399880
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2627066545509687028, guid: cc7fa9002366e2942967339ec65b739f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2627066545509687028, guid: cc7fa9002366e2942967339ec65b739f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2627066545509687028, guid: cc7fa9002366e2942967339ec65b739f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2627066545509687028, guid: cc7fa9002366e2942967339ec65b739f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2627066545509687028, guid: cc7fa9002366e2942967339ec65b739f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2627066545509687028, guid: cc7fa9002366e2942967339ec65b739f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2627066545509687028, guid: cc7fa9002366e2942967339ec65b739f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2627066545509687028, guid: cc7fa9002366e2942967339ec65b739f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2627066545509687028, guid: cc7fa9002366e2942967339ec65b739f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2627066545509687028, guid: cc7fa9002366e2942967339ec65b739f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3404413137961256014, guid: cc7fa9002366e2942967339ec65b739f, type: 3}
+      propertyPath: m_Name
+      value: Bumpasaur
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: cc7fa9002366e2942967339ec65b739f, type: 3}
 --- !u!1001 &9038598716239604006
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -75440,3 +75497,4 @@ SceneRoots:
   - {fileID: 301933170}
   - {fileID: 1728878023}
   - {fileID: 929957623}
+  - {fileID: 7240534023013399880}
