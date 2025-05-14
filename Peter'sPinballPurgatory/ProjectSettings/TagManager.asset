@@ -9,6 +9,7 @@ TagManager:
   - topScreen
   - BumperSpot
   - FakePlayer
+  - MiddleBumper
   layers:
   - Default
   - TransparentFX

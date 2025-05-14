@@ -49,14 +49,14 @@ public class OverUnder : QuarterAbstract
 
         GetComponent<CheckActive>().setActive();
 
-        // ✅ Only play sound when item is actually active
-        if (GetComponent<CheckActive>().getActive() && sfx != null)
-        {
-            sfx.Play();
-        }
-
         if (GameObject.FindWithTag("Player") || GameObject.FindWithTag("FakePlayer"))
         {
+            // ✅ Only play sound when item is actually active
+            if (GetComponent<CheckActive>().getActive() && sfx != null)
+            {
+                sfx.Play();
+            }
+
             BumperStats[] bstats = FindObjectsByType<BumperStats>(FindObjectsSortMode.None);
 
             int randBumper = Random.Range(0, bstats.Length);

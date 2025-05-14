@@ -6,7 +6,7 @@ public class CameraFollow : MonoBehaviour
     //camera smoothdamp copied from https://www.youtube.com/watch?v=ZBj3LBA2vUY&ab_channel=bendux
     private Camera m_Camera;
     private Transform player;
-    public Transform bumperMid;
+    private Transform bumperMid;
     public float distFromPlayer, distFromBumper;
 
     private Vector3 offset, offestdie;
@@ -17,6 +17,8 @@ public class CameraFollow : MonoBehaviour
     {
         m_Camera = Camera.main;
         setPlayerPos();
+
+        bumperMid = GameObject.FindWithTag("MiddleBumper").transform;
 
         offset = new Vector3(0f, distFromPlayer, 0f);
         offestdie = new Vector3(-10f, distFromBumper, 0f);

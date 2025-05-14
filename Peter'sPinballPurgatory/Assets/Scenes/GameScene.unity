@@ -73595,6 +73595,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: pinball
       objectReference: {fileID: 0}
+    - target: {fileID: 8870441233854982823, guid: 0830cdcd516d6e5429109de519830c33, type: 3}
+      propertyPath: m_TagString
+      value: MiddleBumper
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

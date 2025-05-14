@@ -49,20 +49,17 @@ public class Mitosis : QuarterAbstract
 
         GetComponent<CheckActive>().setActive();
 
-        // ✅ Only play sound when item is actually active
-        if (GetComponent<CheckActive>().getActive() && sfx != null)
-        {
-            sfx.Play();
-        }
-
         if (GameObject.FindWithTag("Player"))
         {
+            // ✅ Only play sound when item is actually active
+            if (GetComponent<CheckActive>().getActive() && sfx != null)
+            {
+                sfx.Play();
+            }
+
             GameObject player = GameObject.FindWithTag("Player");
 
-            if (fakePeter != null)
-            {
-                Instantiate(fakePeter, player.transform.position, player.transform.rotation);
-            }
+            Instantiate(fakePeter, player.transform.position, player.transform.rotation);
         }
     }
 }
