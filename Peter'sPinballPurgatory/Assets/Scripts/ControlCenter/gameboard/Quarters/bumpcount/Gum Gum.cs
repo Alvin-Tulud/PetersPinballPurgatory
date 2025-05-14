@@ -4,13 +4,13 @@ using UnityEngine;
 public class GumGum : QuarterAbstract
 {
     private RoundStatTracker stats;
-
     private int bumps;
+    private AudioSource sfx;
 
     private void Awake()
     {
         stats = FindAnyObjectByType<RoundStatTracker>();
-
+        sfx = GetComponent<AudioSource>();
         bumps = 0;
     }
 
@@ -36,14 +36,17 @@ public class GumGum : QuarterAbstract
 
     public override void doEffect()
     {
-        GetComponent<AudioSource>().Play();
+        // Play the item SFX if available
+        if (sfx != null)
+        {
+            sfx.Play();
+        }
 
         Debug.Log("do effect gum gum: " + bumps);
 
         GetComponent<CheckActive>().setActive();
-        
-        ScoreTracker score = FindAnyObjectByType<ScoreTracker>();
 
+        ScoreTracker score = FindAnyObjectByType<ScoreTracker>();
         score.AddScore(bumps);
     }
 }

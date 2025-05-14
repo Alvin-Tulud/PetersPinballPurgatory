@@ -5,11 +5,14 @@ public class Pity : QuarterAbstract
 {
     private RoundStatTracker stats;
     private int deathCount;
+    private AudioSource sfx;
 
     private void Awake()
     {
         stats = FindAnyObjectByType<RoundStatTracker>();
         deathCount = 0;
+
+        sfx = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -36,6 +39,12 @@ public class Pity : QuarterAbstract
 
     public override void doEffect()
     {
+        // Play sound effect if available
+        if (sfx != null)
+        {
+            sfx.Play();
+        }
+
         Debug.Log("Check effect pity");
 
         GetComponent<CheckActive>().setActive();

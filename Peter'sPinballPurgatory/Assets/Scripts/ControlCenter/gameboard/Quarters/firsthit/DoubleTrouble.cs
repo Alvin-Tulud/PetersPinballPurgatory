@@ -7,9 +7,12 @@ public class DoubleTrouble : QuarterAbstract
     private RoundStatTracker stats;
     private bool doOnce;
 
+    private AudioSource sfx;
+
     private void Awake()
     {
         stats = FindAnyObjectByType<RoundStatTracker>();
+        sfx = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -35,6 +38,12 @@ public class DoubleTrouble : QuarterAbstract
 
     public override void doEffect()
     {
+        // Play sound effect if available
+        if (sfx != null)
+        {
+            sfx.Play();
+        }
+
         Debug.Log("Check effect doubletrouble");
 
         GetComponent<CheckActive>().setActive();

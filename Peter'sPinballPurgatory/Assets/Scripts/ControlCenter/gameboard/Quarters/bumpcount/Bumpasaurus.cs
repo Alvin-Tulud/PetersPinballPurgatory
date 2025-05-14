@@ -3,12 +3,14 @@ using UnityEngine;
 public class Bumpasaurus : QuarterAbstract
 {
     private RoundStatTracker stats;
-
     private int bumps;
+
+    private AudioSource sfx;
 
     private void Awake()
     {
         stats = FindAnyObjectByType<RoundStatTracker>();
+        sfx = GetComponent<AudioSource>();
 
         bumps = 0;
     }
@@ -39,6 +41,12 @@ public class Bumpasaurus : QuarterAbstract
     public override void doEffect()
     {
         Debug.Log("do effect gum gum: " + bumps);
+
+        // Play SFX if available
+        if (sfx != null)
+        {
+            sfx.Play();
+        }
 
         GetComponent<CheckActive>().setActive();
 

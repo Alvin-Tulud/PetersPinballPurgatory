@@ -5,11 +5,14 @@ public class TinyBig : QuarterAbstract
 {
     private RoundStatTracker stats;
     private bool doOnce;
+    private AudioSource sfx;
 
     private void Awake()
     {
         stats = FindAnyObjectByType<RoundStatTracker>();
         doOnce = true;
+
+        sfx = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -36,6 +39,12 @@ public class TinyBig : QuarterAbstract
 
     public override void doEffect()
     {
+        // Play sound effect if available
+        if (sfx != null)
+        {
+            sfx.Play();
+        }
+
         Debug.Log("Check effect TinyBig");
 
         GetComponent<CheckActive>().setActive();

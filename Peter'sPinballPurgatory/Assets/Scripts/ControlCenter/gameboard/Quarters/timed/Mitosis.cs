@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 
 public class Mitosis : QuarterAbstract
@@ -8,10 +8,14 @@ public class Mitosis : QuarterAbstract
 
     public GameObject fakePeter;
 
+    private AudioSource sfx;
+
     private void Awake()
     {
         stats = FindAnyObjectByType<RoundStatTracker>();
         checkedTime = 0;
+
+        sfx = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -21,9 +25,11 @@ public class Mitosis : QuarterAbstract
 
     public override void checkTrigger()
     {
+        // ✅ Only run if item is active
+        if (!GetComponent<CheckActive>().getActive()) return;
+
         int timecheck = Mathf.FloorToInt(stats.getTime());
 
-        //Debug.Log(timecheck);
         if (timecheck != checkedTime && timecheck % 3 == 0 && stats.getTime() > 2f && FindAnyObjectByType<flipwalloff>().getwallPassed())
         {
             Debug.Log("Check trigger Mitosis");
@@ -41,19 +47,24 @@ public class Mitosis : QuarterAbstract
 
     public override void doEffect()
     {
+        // ✅ Only play SFX when active
+        if (sfx != null)
+        {
+            sfx.Play();
+        }
+
         Debug.Log("Check effect Mitosis");
 
         GetComponent<CheckActive>().setActive();
 
         if (GameObject.FindWithTag("Player"))
         {
-            Debug.Log("found");
-
             GameObject player = GameObject.FindWithTag("Player");
 
-            Debug.Log(fakePeter != null);
-
-            Instantiate(fakePeter, player.transform.position, player.transform.rotation);
+            if (fakePeter != null)
+            {
+                Instantiate(fakePeter, player.transform.position, player.transform.rotation);
+            }
         }
     }
 }

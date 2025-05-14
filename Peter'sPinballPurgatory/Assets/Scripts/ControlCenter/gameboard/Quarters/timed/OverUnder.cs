@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 using static QuarterAbstract;
 
@@ -7,10 +7,14 @@ public class OverUnder : QuarterAbstract
     private RoundStatTracker stats;
     private int checkedTime;
 
+    private AudioSource sfx;
+
     private void Awake()
     {
         stats = FindAnyObjectByType<RoundStatTracker>();
         checkedTime = 0;
+
+        sfx = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -20,9 +24,11 @@ public class OverUnder : QuarterAbstract
 
     public override void checkTrigger()
     {
+        // ❌ Don’t run if this item hasn’t been activated
+        if (!GetComponent<CheckActive>().getActive()) return;
+
         int timecheck = Mathf.FloorToInt(stats.getTime());
 
-        //Debug.Log(timecheck);
         if (timecheck != checkedTime && timecheck % 1 == 0 && stats.getTime() > 0.5f && FindAnyObjectByType<flipwalloff>().getwallPassed())
         {
             Debug.Log("Check trigger overunder");
@@ -40,22 +46,22 @@ public class OverUnder : QuarterAbstract
 
     public override void doEffect()
     {
+        if (sfx != null)
+        {
+            sfx.Play();
+        }
+
         Debug.Log("Check effect overunder");
 
-        GetComponent<CheckActive>().setActive();
+        BumperStats[] bstats = FindObjectsByType<BumperStats>(FindObjectsSortMode.None);
 
         if (GameObject.FindWithTag("Player") || GameObject.FindWithTag("FakePlayer"))
         {
-            BumperStats[] bstats = FindObjectsByType<BumperStats>(FindObjectsSortMode.None);
-
             int randBumper = Random.Range(0, bstats.Length);
-
             bstats[randBumper].updateScore(effect.Double);
 
             randBumper = Random.Range(0, bstats.Length);
-
             bstats[randBumper].updateScore(effect.Halve);
         }
-        
     }
 }
